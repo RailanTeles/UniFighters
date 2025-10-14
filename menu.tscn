@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://dfdpmhiucgpve"]
+
+[ext_resource type="Texture2D" uid="uid://g62drlc00cok" path="res://assets/menu/menu-sheet.png" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://7qjsed575kr2" path="res://node_2d.gd" id="2_4hy44"]
+[ext_resource type="Texture2D" uid="uid://c6qlfckdlibjp" path="res://assets/menu/logodojogo-ani-sheet.png" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://6cfdcraqdisx" path="res://assets/menu/logodojogo-sheet.png" id="3_4hy44"]
+[ext_resource type="FontFile" uid="uid://cji4gkj0xseem" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="5_ytr4m"]
+[ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="6_l48gv"]
+[ext_resource type="Script" uid="uid://ds2lv2lsufnn5" path="res://menu_musica.gd" id="7_ecwwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouk20"]
+atlas = ExtResource("1_lti8b")
+region = Rect2(0, 0, 640, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mae5d"]
+atlas = ExtResource("1_lti8b")
+region = Rect2(640, 0, 640, 426)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hy44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouk20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mae5d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1wq0"]
+atlas = ExtResource("3_4hy44")
+region = Rect2(0, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwrpx"]
+atlas = ExtResource("3_4hy44")
+region = Rect2(240, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7jxm"]
+atlas = ExtResource("3_4hy44")
+region = Rect2(480, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jspdm"]
+atlas = ExtResource("3_4hy44")
+region = Rect2(720, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytr4m"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(0, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l48gv"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(240, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecwwl"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(480, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk3ma"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(720, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrnbx"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(960, 0, 240, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqepy"]
+atlas = ExtResource("2_mae5d")
+region = Rect2(1200, 0, 240, 230)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxnod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1wq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwrpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7jxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jspdm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytr4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l48gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecwwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk3ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrnbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqepy")
+}],
+"loop": false,
+"name": &"inicio",
+"speed": 10.0
+}]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.8, 1.52)
+sprite_frames = SubResource("SpriteFrames_4hy44")
+autoplay = "default"
+centered = false
+
+[node name="logo" type="Node2D" parent="."]
+position = Vector2(-2, 5)
+script = ExtResource("2_4hy44")
+metadata/_edit_group_ = true
+
+[node name="logoAni" type="AnimatedSprite2D" parent="logo"]
+position = Vector2(575, 270)
+scale = Vector2(2.24583, 2.31304)
+sprite_frames = SubResource("SpriteFrames_oxnod")
+animation = &"idle"
+autoplay = "inicio"
+
+[node name="texto" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_ytr4m")
+theme_override_font_sizes/font_size = 35
+text = "Pressione qualquer tecla para iniciar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menuMusica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_l48gv")
+autoplay = true
+script = ExtResource("7_ecwwl")
