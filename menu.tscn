@@ -1,12 +1,50 @@
-[gd_scene load_steps=22 format=3 uid="uid://dfdpmhiucgpve"]
+[gd_scene load_steps=34 format=3 uid="uid://dfdpmhiucgpve"]
 
 [ext_resource type="Texture2D" uid="uid://g62drlc00cok" path="res://assets/menu/menu-sheet.png" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://c021rqwjp1t2f" path="res://menu.gd" id="1_nrnbx"]
 [ext_resource type="Script" uid="uid://7qjsed575kr2" path="res://node_2d.gd" id="2_4hy44"]
 [ext_resource type="Texture2D" uid="uid://c6qlfckdlibjp" path="res://assets/menu/logodojogo-ani-sheet.png" id="2_mae5d"]
 [ext_resource type="Texture2D" uid="uid://6cfdcraqdisx" path="res://assets/menu/logodojogo-sheet.png" id="3_4hy44"]
 [ext_resource type="FontFile" uid="uid://cji4gkj0xseem" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="5_ytr4m"]
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="6_l48gv"]
 [ext_resource type="Script" uid="uid://ds2lv2lsufnn5" path="res://menu_musica.gd" id="7_ecwwl"]
+[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="8_kk3ma"]
+
+[sub_resource type="Animation" id="Animation_nrnbx"]
+resource_name = "fade_in_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 0.757858),
+"update": 0,
+"values": [Color(1, 1, 1, 0.352941), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iqepy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1wq0"]
+_data = {
+&"RESET": SubResource("Animation_iqepy"),
+&"fade_in_menu": SubResource("Animation_nrnbx")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouk20"]
 atlas = ExtResource("1_lti8b")
@@ -113,6 +151,67 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrnbx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxnod"]
+bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqepy"]
+bg_color = Color(0.184314, 0.372549, 0.45098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jspdm"]
+bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1wq0"]
+bg_color = Color(0.184314, 0.372549, 0.45098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7jxm"]
+bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwrpx"]
+bg_color = Color(0.184314, 0.372549, 0.45098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -120,6 +219,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nrnbx")
+
+[node name="animacaoMenu" type="AnimationPlayer" parent="."]
+root_node = NodePath("../menuOpcoes")
+libraries = {
+&"": SubResource("AnimationLibrary_h1wq0")
+}
 
 [node name="fundo" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.8, 1.52)
@@ -159,5 +265,63 @@ vertical_alignment = 1
 
 [node name="menuMusica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_l48gv")
+volume_db = -14.054
 autoplay = true
 script = ExtResource("7_ecwwl")
+
+[node name="menuOpcoes" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrnbx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuOpcoes"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="jogarBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_kk3ma")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxnod")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqepy")
+text = "Jogar"
+
+[node name="creditosBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_kk3ma")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_jspdm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h1wq0")
+text = "Créditos"
+
+[node name="sairBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_kk3ma")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_g7jxm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dwrpx")
+text = "Sair"
+
+[connection signal="pressed" from="menuOpcoes/VBoxContainer/sairBotao" to="." method="_on_sair_botao_pressed"]
