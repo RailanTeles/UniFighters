@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="6_l48gv"]
 [ext_resource type="Script" uid="uid://ds2lv2lsufnn5" path="res://menu_musica.gd" id="7_ecwwl"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="8_kk3ma"]
-[ext_resource type="StyleBox" uid="uid://ooennb1qq826" path="res://assets/themes/botao_selecionado_menu.tres" id="10_iqepy"]
 
 [sub_resource type="Animation" id="Animation_iqepy"]
 length = 0.001
@@ -159,6 +158,17 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxnod"]
+bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqepy"]
 bg_color = Color(0.184314, 0.372549, 0.45098, 1)
 corner_radius_top_left = 10
@@ -292,8 +302,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
-theme_override_styles/hover = ExtResource("10_iqepy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxnod")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iqepy")
 text = "Jogar"
 
@@ -302,7 +311,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jspdm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_h1wq0")
 text = "Créditos"
@@ -312,7 +320,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g7jxm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dwrpx")
 text = "Sair"
