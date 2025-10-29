@@ -317,4 +317,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g7jxm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dwrpx")
 text = "Sair"
 
+[connection signal="pressed" from="menuOpcoes/VBoxContainer/creditosBotao" to="." method="_on_creditos_botao_pressed"]
 [connection signal="pressed" from="menuOpcoes/VBoxContainer/sairBotao" to="." method="_on_sair_botao_pressed"]

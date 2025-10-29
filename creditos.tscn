@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://iek7ffradqqr"]
+
+[ext_resource type="Script" uid="uid://bqkrq7bwmihsq" path="res://creditos.gd" id="1_cysqe"]
+[ext_resource type="Texture2D" uid="uid://c4js6erguri0u" path="res://assets/menu/creditos.png" id="1_ilafw"]
+[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_7flbs"]
+[ext_resource type="AudioStream" uid="uid://c4d82a5xmydqo" path="res://assets/musics/creditosMusica.mp3" id="3_alf7g"]
+[ext_resource type="Script" uid="uid://bev835btdwifb" path="res://audio_creditos.gd" id="4_3rtis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7flbs"]
+atlas = ExtResource("1_ilafw")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alf7g"]
+atlas = ExtResource("1_ilafw")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rtis"]
+atlas = ExtResource("1_ilafw")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cysqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7flbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alf7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rtis")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cysqe")
+
+[node name="fundoCreditos" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cysqe")
+animation = &"idle"
+autoplay = "idle"
+centered = false
+
+[node name="textos" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="titulo" type="Label" parent="textos"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_right = 32.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7flbs")
+theme_override_font_sizes/font_size = 40
+text = "Créditos"
+
+[node name="nomes" type="Label" parent="textos"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.5
+offset_top = -78.5
+offset_right = 227.5
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_7flbs")
+theme_override_font_sizes/font_size = 30
+text = "Railan Patrick Teles de Oliveira
+Guilherme Oliveira Pereira
+Luiz Henrique Rios Soares
+Ana Beatriz da Silva Prados"
+horizontal_alignment = 1
+
+[node name="audioCreditos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_alf7g")
+autoplay = true
+script = ExtResource("4_3rtis")
