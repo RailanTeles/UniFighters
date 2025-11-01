@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://iek7ffradqqr"]
+[gd_scene load_steps=9 format=3 uid="uid://iek7ffradqqr"]
 
 [ext_resource type="Script" uid="uid://bqkrq7bwmihsq" path="res://creditos.gd" id="1_cysqe"]
 [ext_resource type="Texture2D" uid="uid://c4js6erguri0u" path="res://assets/menu/creditos.png" id="1_ilafw"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_7flbs"]
 [ext_resource type="AudioStream" uid="uid://c4d82a5xmydqo" path="res://assets/musics/creditosMusica.mp3" id="3_alf7g"]
-[ext_resource type="Script" uid="uid://bev835btdwifb" path="res://audio_creditos.gd" id="4_3rtis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7flbs"]
 atlas = ExtResource("1_ilafw")
@@ -103,4 +102,4 @@ horizontal_alignment = 1
 [node name="audioCreditos" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_alf7g")
 autoplay = true
-script = ExtResource("4_3rtis")
+parameters/looping = true

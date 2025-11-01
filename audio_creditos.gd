@@ -1,7 +1,9 @@
 extends AudioStreamPlayer
 
 func _ready():
-	connect("finished", Callable(self, "_on_finished"))
+	# connect("finished", Callable(self, "_on_finished"))
+	pass
 	
 func _on_finished():
-	play()
+	# play()
+	pass
