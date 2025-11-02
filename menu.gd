@@ -23,8 +23,12 @@ func _on_animation_finished(anim_name):
 	if anim_name == "fade_in_menu":
 		jogar_botao.grab_focus()
 
-func _on_sair_botao_pressed() -> void:
-	get_tree().quit()
+func _on_jogar_botao_pressed() -> void:
+	pass # Replace with function body.
 
 func _on_creditos_botao_pressed() -> void:
 	get_tree().change_scene_to_file("res://creditos.tscn")
+
+
+func _on_sair_botao_pressed() -> void:
+	get_tree().quit()
