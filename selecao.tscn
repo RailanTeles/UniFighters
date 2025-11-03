@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://df5iqq7gemu5t"]
+
+[ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_1hcjh"]
+[ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_mitmw"]
+[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_6gbh7"]
+[ext_resource type="Texture2D" uid="uid://pubqoa4mving" path="res://assets/grupoBotaoP1.png" id="4_hyemw"]
+[ext_resource type="Texture2D" uid="uid://e46hbbkevedd" path="res://assets/grupoBotaoP2.png" id="5_sofw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
+atlas = ExtResource("1_1hcjh")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gbh7"]
+atlas = ExtResource("1_1hcjh")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5dea"]
+atlas = ExtResource("1_1hcjh")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyemw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gbh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5dea")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="selecao" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hyemw")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.775229
+centered = false
+
+[node name="menuMusica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mitmw")
+volume_db = -14.054
+autoplay = true
+parameters/looping = true
+
+[node name="texto" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 7.0
+offset_right = 181.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_6gbh7")
+theme_override_font_sizes/font_size = 25
+text = "Escolha os personagens e clique em “Começar”
+Ou pressione “Esc” para retornar"
+horizontal_alignment = 1
+
+[node name="controlesP1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -118.0
+offset_right = 185.0
+offset_bottom = -54.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_hyemw")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="controlesP2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -285.0
+offset_top = -118.0
+offset_right = -109.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_sofw2")
+expand_mode = 1
+stretch_mode = 1

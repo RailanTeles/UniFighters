@@ -36,6 +36,7 @@ func _on_jogar_botao_pressed() -> void:
 	tween.tween_property(jogar_botao, "modulate:a", 1.0, 0.1)
 	await tween.finished
 	await confirmar_musica.finished
+	get_tree().change_scene_to_file("res://selecao.tscn")
 
 func _on_creditos_botao_pressed() -> void:
 	get_tree().change_scene_to_file("res://creditos.tscn")
