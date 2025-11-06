@@ -11,6 +11,8 @@ extends Control
 @onready var menu_musica: AudioStreamPlayer = $menuMusica
 @onready var confirmar_musica: AudioStreamPlayer = $confirmarMusica
 
+var _esta_transicionando = false
+
 func _ready():
 	menu.visible = false
 	menu.modulate.a = 0
@@ -27,9 +29,10 @@ func _on_animation_finished(anim_name):
 		jogar_botao.grab_focus()
 
 func _on_jogar_botao_pressed() -> void:
-	jogar_botao.disabled = true
-	creditos_botao.disabled = true
-	sair_botao.disabled = true
+	jogar_botao.release_focus()
+	if _esta_transicionando:
+		return
+	_esta_transicionando = true
 	
 	menu_musica.stop()
 	confirmar_musica.play()
@@ -43,8 +46,14 @@ func _on_jogar_botao_pressed() -> void:
 	get_tree().change_scene_to_file("res://selecao.tscn")
 
 func _on_creditos_botao_pressed() -> void:
+	if _esta_transicionando:
+		return
+	_esta_transicionando = true
 	get_tree().change_scene_to_file("res://creditos.tscn")
 
 
 func _on_sair_botao_pressed() -> void:
+	if _esta_transicionando:
+		return
+	_esta_transicionando = true
 	get_tree().quit()
