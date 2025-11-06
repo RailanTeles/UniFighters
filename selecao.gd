@@ -70,6 +70,8 @@ func _process(delta):
 
 func atualizar_posicao_cursores():
 	if p1_foco_atual:
+		p1_cursor.size = p1_foco_atual.size
 		p1_cursor.global_position = p1_foco_atual.global_position
 	if p2_foco_atual:
+		p2_cursor.size = p2_foco_atual.size
 		p2_cursor.global_position = p2_foco_atual.global_position

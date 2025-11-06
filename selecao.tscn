@@ -132,6 +132,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../selecao/GridContainer/Char3")
 texture_normal = ExtResource("7_qtpp8")
 
 [node name="selecao" type="Control" parent="."]
