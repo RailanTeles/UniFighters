@@ -27,6 +27,10 @@ func _on_animation_finished(anim_name):
 		jogar_botao.grab_focus()
 
 func _on_jogar_botao_pressed() -> void:
+	jogar_botao.disabled = true
+	creditos_botao.disabled = true
+	sair_botao.disabled = true
+	
 	menu_musica.stop()
 	confirmar_musica.play()
 	var tween = create_tween()

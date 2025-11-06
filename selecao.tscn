@@ -1,10 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://df5iqq7gemu5t"]
+[gd_scene load_steps=18 format=3 uid="uid://df5iqq7gemu5t"]
 
 [ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_1hcjh"]
+[ext_resource type="Script" uid="uid://csjapbbhnym4t" path="res://selecao.gd" id="1_7c4td"]
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_mitmw"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_6gbh7"]
 [ext_resource type="Texture2D" uid="uid://pubqoa4mving" path="res://assets/grupoBotaoP1.png" id="4_hyemw"]
 [ext_resource type="Texture2D" uid="uid://e46hbbkevedd" path="res://assets/grupoBotaoP2.png" id="5_sofw2"]
+[ext_resource type="Texture2D" uid="uid://nsc05wbhbofc" path="res://assets/selecaoPersonagem/comecarNormal.png" id="7_qtpp8"]
+[ext_resource type="Texture2D" uid="uid://bc1kwe6l0blau" path="res://assets/personagens/regulata/icones/RegulataIcone.png" id="8_qbpjo"]
+[ext_resource type="Texture2D" uid="uid://blnqangnnf6id" path="res://assets/personagens/cabomante/icone/CabomanteIcone.png" id="9_n4pp6"]
+[ext_resource type="Texture2D" uid="uid://csf4u77chists" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
+[ext_resource type="Texture2D" uid="uid://b0pwqmdlcor52" path="res://assets/personagens/sprintora/icones/SprintoraIcone.png" id="11_iwa32"]
+[ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
+[ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
 atlas = ExtResource("1_1hcjh")
@@ -35,13 +43,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="selecao" type="Control"]
+[node name="cenaSelecao" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7c4td")
 
 [node name="fundo" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hyemw")
@@ -79,33 +88,114 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -145.0
+offset_top = -142.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="controlesP1" type="TextureRect" parent="botoes"]
+[node name="botoesP1" type="TextureRect" parent="botoes"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 13.0
+offset_left = 10.0
 offset_top = -64.0
-offset_right = 363.0
+offset_right = 360.0
 offset_bottom = 64.0
 grow_vertical = 2
 texture = ExtResource("4_hyemw")
 
-[node name="controlesP2" type="TextureRect" parent="botoes"]
+[node name="botoesP2" type="TextureRect" parent="botoes"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -362.0
+offset_left = -358.0
 offset_top = -65.0
-offset_right = -11.0
+offset_right = -7.0
 offset_bottom = 65.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("5_sofw2")
+
+[node name="comecarButton" type="TextureButton" parent="botoes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_qtpp8")
+
+[node name="selecao" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -228.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="selecao"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -82.0
+offset_right = 82.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 2
+
+[node name="Char1" type="TextureButton" parent="selecao/GridContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Char2")
+focus_neighbor_bottom = NodePath("../Char3")
+texture_normal = ExtResource("8_qbpjo")
+
+[node name="Char2" type="TextureButton" parent="selecao/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Char1")
+focus_neighbor_bottom = NodePath("../Char4")
+texture_normal = ExtResource("9_n4pp6")
+
+[node name="Char3" type="TextureButton" parent="selecao/GridContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Char1")
+focus_neighbor_right = NodePath("../Char4")
+focus_neighbor_bottom = NodePath("../../../botoes/comecarButton")
+texture_normal = ExtResource("10_lnbtv")
+
+[node name="Char4" type="TextureButton" parent="selecao/GridContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Char3")
+focus_neighbor_top = NodePath("../Char2")
+focus_neighbor_bottom = NodePath("../../../botoes/comecarButton")
+texture_normal = ExtResource("11_iwa32")
+
+[node name="P2_cursor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_ggar8")
+
+[node name="P1_cursor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("13_501mu")
