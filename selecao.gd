@@ -4,10 +4,6 @@ extends Control
 var p1_foco_atual: Control
 var p2_foco_atual: Control
 
-# Armazena o personagem que foi confirmado
-var p1_personagem_selecionado = null
-var p2_personagem_selecionado = null
-
 # Botôes
 @onready var char_1: TextureButton = $selecao/GridContainer/Char1
 @onready var char_2: TextureButton = $selecao/GridContainer/Char2
@@ -20,7 +16,47 @@ var p2_personagem_selecionado = null
 @onready var p2_cursor: TextureRect = $P2_cursor
 
 
+# Banners
+@onready var banner_p1_display: TextureRect = $BannerP1_Display
+@onready var banner_p2_display: TextureRect = $BannerP2_Display
+
+# Armazena o personagem que foi confirmado
+var p1_personagem_selecionado = null
+var p2_personagem_selecionado = null
+
+# Pre render das imagens
+var banner_regulata_p1 = preload("res://assets/personagens/regulata/icones/RegulataP1.png")
+var banner_regulata_p2 = preload("res://assets/personagens/regulata/icones/RegulataP2.png")
+var banner_cabomante_p1 = preload("res://assets/personagens/cabomante/icone/CabomanteP1.png")
+var banner_cabomante_p2 = preload("res://assets/personagens/cabomante/icone/CabomanteP2.png")
+var banner_imperatech_p1 = preload("res://assets/personagens/imperatech/icone/ImperatechP1.png")
+var banner_imperatech_p2 = preload("res://assets/personagens/imperatech/icone/ImperatechP2.png")
+var banner_sprintora_p1 = preload("res://assets/personagens/sprintora/icones/SprintoraP1.png")
+var banner_sprintora_p2 = preload("res://assets/personagens/sprintora/icones/SprintoraP2.png")
+
+var dados_banners_p1 = {
+	"Regulata" : banner_regulata_p1,
+	"Cabomante" : banner_cabomante_p1,
+	"Imperatech" : banner_imperatech_p1,
+	"Sprintora" : banner_sprintora_p1
+}
+
+var dados_banners_p2 = {
+	"Regulata" : banner_regulata_p2,
+	"Cabomante" : banner_cabomante_p2,
+	"Imperatech" : banner_imperatech_p2,
+	"Sprintora" : banner_sprintora_p2
+}
+
+var dados_caracteristicas = {}
+
 func _ready():
+	dados_caracteristicas = {
+		char_1 : "Regulata",
+		char_2 : "Cabomante",
+		char_3 : "Imperatech",
+		char_4 : "Sprintora"
+	}
 	p1_foco_atual = char_1
 	p2_foco_atual = char_2
 	call_deferred("atualizar_posicao_cursores")
@@ -47,7 +83,16 @@ func _process(delta):
 			p1_foco_atual = proximo_no1
 			foco_mudou = true
 	
-	# Controles P2
+	# Botão de selecionar o personagem
+	if Input.is_action_just_pressed("p1_pular"):
+		if p1_foco_atual == comecar_button:
+			_on_comecar_button_pressed()
+		
+		else:
+			p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
+			atualizar_banner_p1(p1_personagem_selecionado)
+	
+	# Controles P2 ------------------------
 	if Input.is_action_just_pressed("p2_direita"):
 		proximo_foco_path2 = p2_foco_atual.get_focus_neighbor(SIDE_RIGHT)
 	elif Input.is_action_just_pressed("p2_esquerda"):
@@ -63,7 +108,15 @@ func _process(delta):
 		if proximo_no2 is Control:
 			p2_foco_atual = proximo_no2
 			foco_mudou = true
+	
+		# Botão de selecionar o personagem
+	if Input.is_action_just_pressed("p2_pular"):
+		if p2_foco_atual == comecar_button:
+			_on_comecar_button_pressed()
 		
+		else:
+			p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]
+			atualizar_banner_p2(p2_personagem_selecionado)
 	# ----- ATUALIZAÇÃO VISUAL -----
 	if foco_mudou:
 		atualizar_posicao_cursores()
@@ -75,3 +128,17 @@ func atualizar_posicao_cursores():
 	if p2_foco_atual:
 		p2_cursor.size = p2_foco_atual.size
 		p2_cursor.global_position = p2_foco_atual.global_position
+
+func _on_comecar_button_pressed() -> void:
+	if p1_personagem_selecionado != null and p2_personagem_selecionado != null:
+		print("COMEÇANDO O JOGO!")
+	else:
+		print("Falta um jogador escolher!")
+
+func atualizar_banner_p1(nome_personagem):
+	if dados_banners_p1.has(nome_personagem):
+		banner_p1_display.texture = dados_banners_p1[nome_personagem]
+
+func atualizar_banner_p2(nome_personagem):
+	if dados_banners_p2.has(nome_personagem):
+		banner_p2_display.texture = dados_banners_p2[nome_personagem]
