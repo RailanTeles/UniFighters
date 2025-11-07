@@ -1,5 +1,11 @@
 extends Control
 
+# Texto
+@onready var texto: Label = $texto
+var texto_normal = "Escolha os personagens e clique em “Começar”
+					Ou pressione “Esc” para retornar"
+var texto_erro = "Todos os jogadores precisam ter escolhido um personagem"
+
 # Armazena o nó que o cursor está apontando
 var p1_foco_atual: Control
 var p2_foco_atual: Control
@@ -9,12 +15,17 @@ var p2_foco_atual: Control
 @onready var char_2: TextureButton = $selecao/GridContainer/Char2
 @onready var char_3: TextureButton = $selecao/GridContainer/Char3
 @onready var char_4: TextureButton = $selecao/GridContainer/Char4
+
 @onready var comecar_button: TextureButton = $botoes/comecarButton
+@onready var erro_som: AudioStreamPlayer = $botoes/comecarButton/erroSom
+@onready var confirmar_som: AudioStreamPlayer = $botoes/comecarButton/confirmarSom
+@onready var erro_timer: Timer = $botoes/comecarButton/erroTimer
+@onready var animacao: AnimatedSprite2D = $botoes/comecarButton/animacao
+
 
 # Cursores
 @onready var p1_cursor: TextureRect = $P1_cursor
 @onready var p2_cursor: TextureRect = $P2_cursor
-
 
 # Banners
 @onready var banner_p1_display: TextureRect = $BannerP1_Display
@@ -25,6 +36,8 @@ var p1_personagem_selecionado = null
 var p2_personagem_selecionado = null
 
 # Pre render das imagens
+var banner_padrao_p1 = preload("res://assets/selecaoPersonagem/padraoP1.png")
+var banner_padrao_p2 = preload("res://assets/selecaoPersonagem/padraoP2.png")
 var banner_regulata_p1 = preload("res://assets/personagens/regulata/icones/RegulataP1.png")
 var banner_regulata_p2 = preload("res://assets/personagens/regulata/icones/RegulataP2.png")
 var banner_cabomante_p1 = preload("res://assets/personagens/cabomante/icone/CabomanteP1.png")
@@ -57,16 +70,24 @@ func _ready():
 		char_3 : "Imperatech",
 		char_4 : "Sprintora"
 	}
+	banner_p1_display.texture = banner_padrao_p1
+	banner_p2_display.texture = banner_padrao_p2
 	p1_foco_atual = char_1
 	p2_foco_atual = char_2
 	call_deferred("atualizar_posicao_cursores")
+
+func _input(event):
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE and event.is_pressed():
+			get_viewport().set_input_as_handled()
+			get_tree().change_scene_to_file("res://menu.tscn")
 
 func _process(delta):
 	var foco_mudou = false 
 	var proximo_foco_path1 = null
 	var proximo_foco_path2 = null
 
-	# Controles P1
+	# --------------------- Controles P1 ---------------------
 	if Input.is_action_just_pressed("p1_direita"):
 		proximo_foco_path1 = p1_foco_atual.get_focus_neighbor(SIDE_RIGHT)
 	elif Input.is_action_just_pressed("p1_esquerda"):
@@ -83,11 +104,10 @@ func _process(delta):
 			p1_foco_atual = proximo_no1
 			foco_mudou = true
 	
-	# Botão de selecionar o personagem
+	# Botão de selecionar o personagem ou começar
 	if Input.is_action_just_pressed("p1_pular"):
 		if p1_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
-		
 		else:
 			p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
 			atualizar_banner_p1(p1_personagem_selecionado)
@@ -113,13 +133,30 @@ func _process(delta):
 	if Input.is_action_just_pressed("p2_pular"):
 		if p2_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
-		
 		else:
 			p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]
 			atualizar_banner_p2(p2_personagem_selecionado)
+
 	# ----- ATUALIZAÇÃO VISUAL -----
 	if foco_mudou:
 		atualizar_posicao_cursores()
+
+func _on_comecar_button_pressed() -> void:
+	if comecar_button.disabled:
+		return
+	if p1_personagem_selecionado != null and p2_personagem_selecionado != null:
+		comecar_button.disabled = true
+		confirmar_som.play()
+		for i in 3:
+			animacao.play("pressionado")
+			await animacao.animation_finished
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://menu.tscn")
+	else:
+		texto.text = texto_erro
+		texto.self_modulate = Color(1,0,0)
+		erro_som.play();
+		erro_timer.start()
 
 func atualizar_posicao_cursores():
 	if p1_foco_atual:
@@ -129,12 +166,6 @@ func atualizar_posicao_cursores():
 		p2_cursor.size = p2_foco_atual.size
 		p2_cursor.global_position = p2_foco_atual.global_position
 
-func _on_comecar_button_pressed() -> void:
-	if p1_personagem_selecionado != null and p2_personagem_selecionado != null:
-		print("COMEÇANDO O JOGO!")
-	else:
-		print("Falta um jogador escolher!")
-
 func atualizar_banner_p1(nome_personagem):
 	if dados_banners_p1.has(nome_personagem):
 		banner_p1_display.texture = dados_banners_p1[nome_personagem]
@@ -142,3 +173,7 @@ func atualizar_banner_p1(nome_personagem):
 func atualizar_banner_p2(nome_personagem):
 	if dados_banners_p2.has(nome_personagem):
 		banner_p2_display.texture = dados_banners_p2[nome_personagem]
+
+func _on_erro_timer_timeout() -> void:
+	texto.text = texto_normal
+	texto.self_modulate = Color(1,1,1)
