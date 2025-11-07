@@ -119,57 +119,30 @@ Ou pressione “Esc” para retornar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="botoes" type="Control" parent="."]
+[node name="botoes" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -142.0
+offset_top = -130.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="botoesP1" type="TextureRect" parent="botoes"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 10.0
-offset_top = -64.0
-offset_right = 360.0
-offset_bottom = 64.0
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("4_hyemw")
 
-[node name="botoesP2" type="TextureRect" parent="botoes"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -358.0
-offset_top = -65.0
-offset_right = -7.0
-offset_bottom = 65.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("5_sofw2")
+[node name="espaco1" type="Control" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="comecarButton" type="TextureButton" parent="botoes"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../../selecao/GridContainer/Char3")
 
 [node name="animacao" type="AnimatedSprite2D" parent="botoes/comecarButton"]
@@ -190,7 +163,16 @@ one_shot = true
 [node name="confirmarSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
 stream = ExtResource("9_qbpjo")
 
-[node name="selecao" type="Control" parent="."]
+[node name="espaco2" type="Control" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="botoesP2" type="TextureRect" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_sofw2")
+
+[node name="selecao" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -202,20 +184,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="selecao"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -82.0
-offset_right = 82.0
-offset_bottom = 82.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 columns = 2
 
 [node name="Char1" type="TextureButton" parent="selecao/GridContainer"]
