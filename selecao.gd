@@ -31,8 +31,8 @@ var p2_foco_atual: Control
 @onready var p2_cursor: TextureRect = $P2_cursor
 
 # Banners
-@onready var banner_p1_display: TextureRect = $BannerP1_Display
-@onready var banner_p2_display: TextureRect = $BannerP2_Display
+@onready var banner_p1_display: TextureRect = $selecao/BannerP1_Display
+@onready var banner_p2_display: TextureRect = $selecao/BannerP2_Display
 
 # Armazena o personagem que foi confirmado
 var p1_personagem_selecionado = null
