@@ -1,5 +1,8 @@
 extends Control
 
+#
+var _esta_carregando = false
+
 # Texto
 @onready var texto: Label = $texto
 var texto_normal = "Escolha os personagens e clique em “Começar”
@@ -83,6 +86,8 @@ func _input(event):
 			get_tree().change_scene_to_file("res://menu.tscn")
 
 func _process(delta):
+	if _esta_carregando:
+		return
 	var foco_mudou = false 
 	var proximo_foco_path1 = null
 	var proximo_foco_path2 = null
@@ -145,6 +150,9 @@ func _on_comecar_button_pressed() -> void:
 	if comecar_button.disabled:
 		return
 	if p1_personagem_selecionado != null and p2_personagem_selecionado != null:
+		_esta_carregando = true
+		p1_cursor.visible = false
+		p2_cursor.visible = false
 		comecar_button.disabled = true
 		confirmar_som.play()
 		for i in 3:
