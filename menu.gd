@@ -11,6 +11,8 @@ extends Control
 @onready var menu_musica: AudioStreamPlayer = $menuMusica
 @onready var confirmar_musica: AudioStreamPlayer = $confirmarMusica
 
+@onready var logo_ani: AnimatedSprite2D = $logoAni
+
 var _esta_transicionando = false
 
 func _ready():
@@ -23,6 +25,10 @@ func _input(event):
 		menu.visible = true
 		texto.visible = false
 		animacao_menu.play("fade_in_menu")
+
+func _on_logo_ani_animation_finished() -> void:
+	if logo_ani.animation == "inicio":
+		logo_ani.play("idle")
 
 func _on_animation_finished(anim_name):
 	if anim_name == "fade_in_menu":

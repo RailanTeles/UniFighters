@@ -1,14 +1,13 @@
-[gd_scene load_steps=34 format=3 uid="uid://dfdpmhiucgpve"]
+[gd_scene load_steps=33 format=3 uid="uid://dfdpmhiucgpve"]
 
 [ext_resource type="Texture2D" uid="uid://g62drlc00cok" path="res://assets/menu/menu-sheet.png" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://c021rqwjp1t2f" path="res://menu.gd" id="1_nrnbx"]
-[ext_resource type="Script" uid="uid://7qjsed575kr2" path="res://node_2d.gd" id="2_4hy44"]
 [ext_resource type="Texture2D" uid="uid://c6qlfckdlibjp" path="res://assets/menu/logodojogo-ani-sheet.png" id="2_mae5d"]
 [ext_resource type="Texture2D" uid="uid://6cfdcraqdisx" path="res://assets/menu/logodojogo-sheet.png" id="3_4hy44"]
 [ext_resource type="FontFile" uid="uid://cji4gkj0xseem" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="5_ytr4m"]
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="6_l48gv"]
 [ext_resource type="AudioStream" uid="uid://butsawnp0nia1" path="res://assets/musics/botaoConfirmar.mp3" id="8_iqepy"]
-[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="8_kk3ma"]
+[ext_resource type="FontFile" uid="uid://bsmamfd8egop4" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="8_nrnbx"]
 [ext_resource type="StyleBox" uid="uid://ooennb1qq826" path="res://assets/themes/botao_selecionado_menu.tres" id="10_iqepy"]
 
 [sub_resource type="Animation" id="Animation_iqepy"]
@@ -218,22 +217,19 @@ libraries = {
 }
 
 [node name="fundo" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.8, 1.52)
+scale = Vector2(0.598438, 0.507042)
 sprite_frames = SubResource("SpriteFrames_4hy44")
 autoplay = "default"
 centered = false
 
-[node name="logo" type="Node2D" parent="."]
-position = Vector2(-2, 5)
-script = ExtResource("2_4hy44")
-metadata/_edit_group_ = true
-
-[node name="logoAni" type="AnimatedSprite2D" parent="logo"]
-position = Vector2(575, 270)
-scale = Vector2(2.24583, 2.31304)
+[node name="logoAni" type="AnimatedSprite2D" parent="."]
+position = Vector2(192, 108)
+scale = Vector2(0.591007, 0.608694)
 sprite_frames = SubResource("SpriteFrames_oxnod")
 animation = &"idle"
 autoplay = "inicio"
+frame = 3
+frame_progress = 0.948168
 
 [node name="texto" type="Label" parent="."]
 layout_mode = 1
@@ -241,14 +237,15 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -88.0
-offset_bottom = -65.0
+offset_top = -17.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1, 1.01695)
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("5_ytr4m")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 16
 text = "Pressione qualquer tecla para iniciar"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -263,63 +260,68 @@ parameters/looping = true
 stream = ExtResource("8_iqepy")
 
 [node name="menuOpcoes" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_left = -80.0
+offset_top = -75.0
+offset_right = 80.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrnbx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menuOpcoes"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -125.0
-offset_right = 125.0
-offset_bottom = 300.0
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -75.0
+offset_right = 65.0
+offset_bottom = 75.0
 grow_horizontal = 2
-theme_override_constants/separation = 35
+grow_vertical = 2
+scale = Vector2(0.994835, 1)
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="jogarBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_kk3ma")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("8_nrnbx")
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("10_iqepy")
 theme_override_styles/hover = ExtResource("10_iqepy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iqepy")
 text = "Jogar"
 
 [node name="creditosBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_kk3ma")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("8_nrnbx")
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("10_iqepy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jspdm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_h1wq0")
 text = "Créditos"
 
 [node name="sairBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_kk3ma")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("8_nrnbx")
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = ExtResource("10_iqepy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g7jxm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dwrpx")
 text = "Sair"
 
+[connection signal="animation_finished" from="logoAni" to="." method="_on_logo_ani_animation_finished"]
 [connection signal="pressed" from="menuOpcoes/VBoxContainer/jogarBotao" to="." method="_on_jogar_botao_pressed"]
 [connection signal="pressed" from="menuOpcoes/VBoxContainer/creditosBotao" to="." method="_on_creditos_botao_pressed"]
 [connection signal="pressed" from="menuOpcoes/VBoxContainer/sairBotao" to="." method="_on_sair_botao_pressed"]
