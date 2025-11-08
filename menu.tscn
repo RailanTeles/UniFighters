@@ -153,10 +153,10 @@ animations = [{
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrnbx"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqepy"]
 bg_color = Color(0.184314, 0.372549, 0.45098, 1)
@@ -171,10 +171,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1wq0"]
 bg_color = Color(0.184314, 0.372549, 0.45098, 1)
@@ -189,10 +189,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwrpx"]
 bg_color = Color(0.184314, 0.372549, 0.45098, 1)
@@ -281,18 +281,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
+offset_left = -60.0
 offset_top = -75.0
-offset_right = 65.0
+offset_right = 60.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.994835, 1)
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="jogarBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_nrnbx")
 theme_override_font_sizes/font_size = 10
@@ -302,7 +302,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_iqepy")
 text = "Jogar"
 
 [node name="creditosBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_nrnbx")
 theme_override_font_sizes/font_size = 10
@@ -312,7 +312,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_h1wq0")
 text = "Créditos"
 
 [node name="sairBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_nrnbx")
 theme_override_font_sizes/font_size = 10
