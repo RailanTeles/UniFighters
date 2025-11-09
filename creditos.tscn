@@ -2,32 +2,32 @@
 
 [ext_resource type="Script" uid="uid://bqkrq7bwmihsq" path="res://creditos.gd" id="1_cysqe"]
 [ext_resource type="Texture2D" uid="uid://c4js6erguri0u" path="res://assets/menu/creditos.png" id="1_ilafw"]
-[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_7flbs"]
+[ext_resource type="FontFile" uid="uid://cji4gkj0xseem" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="3_3rtis"]
 [ext_resource type="AudioStream" uid="uid://c4d82a5xmydqo" path="res://assets/musics/creditosMusica.mp3" id="3_alf7g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7flbs"]
-atlas = ExtResource("1_ilafw")
-region = Rect2(0, 0, 1152, 648)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_alf7g"]
-atlas = ExtResource("1_ilafw")
-region = Rect2(1152, 0, 1152, 648)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rtis"]
 atlas = ExtResource("1_ilafw")
-region = Rect2(2304, 0, 1152, 648)
+region = Rect2(0, 0, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cysqe"]
+atlas = ExtResource("1_ilafw")
+region = Rect2(384, 0, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rbuu"]
+atlas = ExtResource("1_ilafw")
+region = Rect2(768, 0, 384, 216)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cysqe"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7flbs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_alf7g")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_3rtis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cysqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rbuu")
 }],
 "loop": true,
 "name": &"idle",
@@ -51,17 +51,17 @@ centered = false
 
 [node name="textos" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(100, 10)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 250.0
-offset_bottom = 150.0
+offset_left = -96.5
+offset_top = -58.5
+offset_right = 96.5
+offset_bottom = 58.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -70,29 +70,31 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -32.5
-offset_right = 32.5
-offset_bottom = 23.0
+offset_left = -45.5
+offset_right = 45.5
+offset_bottom = 25.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_7flbs")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("3_3rtis")
+theme_override_font_sizes/font_size = 16
 text = "Créditos"
+horizontal_alignment = 1
 
 [node name="nomes" type="Label" parent="textos"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -227.5
-offset_top = -78.5
-offset_right = 227.5
-offset_bottom = 78.5
+anchor_bottom = 1.0
+offset_left = -95.5
+offset_top = -83.0
+offset_right = 99.5
+offset_bottom = -8.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_7flbs")
-theme_override_font_sizes/font_size = 30
+grow_vertical = 0
+scale = Vector2(0.99539, 1.02765)
+theme_override_fonts/font = ExtResource("3_3rtis")
+theme_override_font_sizes/font_size = 12
 text = "Railan Patrick Teles de Oliveira
 Guilherme Oliveira Pereira
 Luiz Henrique Rios Soares
