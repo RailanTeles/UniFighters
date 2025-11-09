@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://dspqof6drk0pd"]
+
+[ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_q3dfb"]
+[ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_vx4ko"]
+[ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_re8yh"]
+[ext_resource type="Texture2D" uid="uid://boc2ld2iw6a57" path="res://assets/selecaoMapa/unifanFrente.png" id="4_v36c2"]
+[ext_resource type="Texture2D" uid="uid://m2pbkjvgrqx4" path="res://assets/selecaoMapa/cenarioQuadra.png" id="5_qxwtb"]
+[ext_resource type="Texture2D" uid="uid://cppbys4dpq66l" path="res://assets/selecaoMapa/cenarioPatio.png" id="6_edfhd"]
+[ext_resource type="Texture2D" uid="uid://bv7r7tfniujg" path="res://assets/selecaoMapa/iconeP1Cenario.png" id="7_edfhd"]
+[ext_resource type="Texture2D" uid="uid://dmdrtg4a0xpwa" path="res://assets/selecaoMapa/iconeP2Cenario.png" id="8_eaofe"]
+[ext_resource type="Texture2D" uid="uid://cqi2rplad76kt" path="res://assets/selecaoMapa/iconeAleatório.png" id="9_k6tkr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
+atlas = ExtResource("1_q3dfb")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gbh7"]
+atlas = ExtResource("1_q3dfb")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5dea"]
+atlas = ExtResource("1_q3dfb")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d47g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gbh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5dea")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="selecaoMapa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d47g1")
+animation = &"idle"
+autoplay = "idle"
+centered = false
+
+[node name="menuMusica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vx4ko")
+volume_db = -14.054
+autoplay = true
+parameters/looping = true
+
+[node name="texto" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -391.5
+offset_top = 7.0
+offset_right = 392.5
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_re8yh")
+theme_override_font_sizes/font_size = 25
+text = "Vote no mapa
+Ou aperte “esc” para voltar a tela de seleção de personagens"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="containerMapas" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -214.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gridMapas" type="HBoxContainer" parent="containerMapas"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="mapa1" type="TextureRect" parent="containerMapas/gridMapas"]
+layout_mode = 2
+texture = ExtResource("4_v36c2")
+
+[node name="espaco" type="Control" parent="containerMapas/gridMapas"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="mapa2" type="TextureRect" parent="containerMapas/gridMapas"]
+layout_mode = 2
+texture = ExtResource("5_qxwtb")
+
+[node name="espaco" type="Control" parent="containerMapas"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="gridMapas2" type="HBoxContainer" parent="containerMapas"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="mapa3" type="TextureRect" parent="containerMapas/gridMapas2"]
+layout_mode = 2
+texture = ExtResource("6_edfhd")
+
+[node name="P1_cursor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 236.0
+texture = ExtResource("7_edfhd")
+
+[node name="P2_cursor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_eaofe")
+
+[node name="CursorAleatorio" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 236.0
+texture = ExtResource("9_k6tkr")

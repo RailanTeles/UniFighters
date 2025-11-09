@@ -159,7 +159,7 @@ func _on_comecar_button_pressed() -> void:
 			animacao.play("pressionado")
 			await animacao.animation_finished
 		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file("res://selecao_mapa.tscn")
 	else:
 		texto.text = texto_erro
 		texto.self_modulate = Color(1,0,0)
