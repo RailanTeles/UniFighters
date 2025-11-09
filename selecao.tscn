@@ -138,6 +138,7 @@ grow_vertical = 0
 [node name="botoesP1" type="TextureRect" parent="botoes"]
 layout_mode = 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 size_flags_vertical = 4
 texture = ExtResource("4_hyemw")
 
@@ -151,6 +152,15 @@ size_flags_vertical = 4
 texture = ExtResource("4_hyemw")
 
 >>>>>>> parent of cdff868 (Mudança na proporção do jogo)
+=======
+size_flags_vertical = 4
+texture = ExtResource("4_hyemw")
+
+[node name="espaco1" type="Control" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+>>>>>>> parent of eeedaca (Update selecao.tscn)
 [node name="comecarButton" type="TextureButton" parent="botoes"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
@@ -176,10 +186,14 @@ one_shot = true
 stream = ExtResource("9_qbpjo")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of eeedaca (Update selecao.tscn)
 [node name="espaco2" type="Control" parent="botoes"]
 layout_mode = 2
 size_flags_horizontal = 3
 
+<<<<<<< HEAD
 [node name="botoesP2" type="TextureRect" parent="botoes"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -187,9 +201,11 @@ texture = ExtResource("5_sofw2")
 
 >>>>>>> parent of eeedaca (Update selecao.tscn)
 =======
+=======
+>>>>>>> parent of eeedaca (Update selecao.tscn)
 [node name="botoesP2" type="TextureRect" parent="botoes"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 texture = ExtResource("5_sofw2")
 
 >>>>>>> parent of cdff868 (Mudança na proporção do jogo)
