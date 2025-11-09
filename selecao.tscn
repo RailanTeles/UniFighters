@@ -115,6 +115,62 @@ Ou pressione “Esc” para retornar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+<<<<<<< HEAD
+=======
+[node name="botoes" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="botoesP1" type="TextureRect" parent="botoes"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_hyemw")
+
+[node name="espaco1" type="Control" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="comecarButton" type="TextureButton" parent="botoes"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../selecao/GridContainer/Char3")
+
+[node name="animacao" type="AnimatedSprite2D" parent="botoes/comecarButton"]
+position = Vector2(101, 49)
+sprite_frames = SubResource("SpriteFrames_501mu")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 1.0
+
+[node name="erroSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
+stream = ExtResource("8_qtpp8")
+volume_db = -14.054
+
+[node name="erroTimer" type="Timer" parent="botoes/comecarButton"]
+wait_time = 5.0
+one_shot = true
+
+[node name="confirmarSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
+stream = ExtResource("9_qbpjo")
+
+[node name="espaco2" type="Control" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="botoesP2" type="TextureRect" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_sofw2")
+
+>>>>>>> parent of eeedaca (Update selecao.tscn)
 [node name="selecao" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
