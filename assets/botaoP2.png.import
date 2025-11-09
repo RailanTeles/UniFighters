@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkvjd62f5jnxq"
-path="res://.godot/imported/iconeP1.png-3b5214fc76f6b3ac964191d3ec8080d9.ctex"
+uid="uid://d2d8v2g1qk6bc"
+path="res://.godot/imported/botaoP2.png-9420d35104557910227d6ed13e728513.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/selecaoPersonagem/iconeP1.png"
-dest_files=["res://.godot/imported/iconeP1.png-3b5214fc76f6b3ac964191d3ec8080d9.ctex"]
+source_file="res://assets/botaoP2.png"
+dest_files=["res://.godot/imported/botaoP2.png-9420d35104557910227d6ed13e728513.ctex"]
 
 [params]
 

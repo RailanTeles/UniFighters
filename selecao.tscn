@@ -1,45 +1,45 @@
 [gd_scene load_steps=25 format=3 uid="uid://df5iqq7gemu5t"]
 
-[ext_resource type="Texture2D" uid="uid://dsfbdusd5o5pm" path="res://assets/bg-selecao.png" id="1_1hcjh"]
+[ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_1hcjh"]
 [ext_resource type="Script" uid="uid://csjapbbhnym4t" path="res://selecao.gd" id="1_7c4td"]
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_mitmw"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_6gbh7"]
-[ext_resource type="Texture2D" uid="uid://b24ujo8a27gde" path="res://assets/grupoBotaoP1.png" id="4_hyemw"]
-[ext_resource type="Texture2D" uid="uid://eje8q3i10kmt" path="res://assets/grupoBotaoP2.png" id="5_sofw2"]
-[ext_resource type="Texture2D" uid="uid://byu2d6vb3lrk2" path="res://assets/selecaoPersonagem/comecarNormal.png" id="7_qtpp8"]
-[ext_resource type="Texture2D" uid="uid://dqimkb7112led" path="res://assets/selecaoPersonagem/comecarNormal-sheet.png" id="8_n4pp6"]
-[ext_resource type="Texture2D" uid="uid://dq8w20xke2cmv" path="res://assets/personagens/regulata/icones/RegulataIcone.png" id="8_qbpjo"]
+[ext_resource type="Texture2D" uid="uid://pubqoa4mving" path="res://assets/grupoBotaoP1.png" id="4_hyemw"]
+[ext_resource type="Texture2D" uid="uid://e46hbbkevedd" path="res://assets/grupoBotaoP2.png" id="5_sofw2"]
+[ext_resource type="Texture2D" uid="uid://nsc05wbhbofc" path="res://assets/selecaoPersonagem/comecarNormal.png" id="7_qtpp8"]
+[ext_resource type="Texture2D" uid="uid://ddsmu1kiy66ya" path="res://assets/selecaoPersonagem/comecarNormal-sheet.png" id="8_n4pp6"]
+[ext_resource type="Texture2D" uid="uid://bc1kwe6l0blau" path="res://assets/personagens/regulata/icones/RegulataIcone.png" id="8_qbpjo"]
 [ext_resource type="AudioStream" uid="uid://dk5pp1j014ttx" path="res://assets/musics/alerta.mp3" id="8_qtpp8"]
-[ext_resource type="Texture2D" uid="uid://db1ubydqiiqkg" path="res://assets/personagens/cabomante/icone/CabomanteIcone.png" id="9_n4pp6"]
+[ext_resource type="Texture2D" uid="uid://blnqangnnf6id" path="res://assets/personagens/cabomante/icone/CabomanteIcone.png" id="9_n4pp6"]
 [ext_resource type="AudioStream" uid="uid://butsawnp0nia1" path="res://assets/musics/botaoConfirmar.mp3" id="9_qbpjo"]
-[ext_resource type="Texture2D" uid="uid://dc2jlicm8ml5o" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
-[ext_resource type="Texture2D" uid="uid://wttbu0je8anw" path="res://assets/personagens/sprintora/icones/SprintoraIcone.png" id="11_iwa32"]
-[ext_resource type="Texture2D" uid="uid://xq76ogyyrc2i" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
-[ext_resource type="Texture2D" uid="uid://cl3cai5xbq338" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
+[ext_resource type="Texture2D" uid="uid://csf4u77chists" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
+[ext_resource type="Texture2D" uid="uid://b0pwqmdlcor52" path="res://assets/personagens/sprintora/icones/SprintoraIcone.png" id="11_iwa32"]
+[ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
+[ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtpp8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
 atlas = ExtResource("1_1hcjh")
-region = Rect2(0, 0, 384, 216)
+region = Rect2(0, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbpjo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gbh7"]
 atlas = ExtResource("1_1hcjh")
-region = Rect2(384, 0, 384, 216)
+region = Rect2(1152, 0, 1152, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4pp6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5dea"]
 atlas = ExtResource("1_1hcjh")
-region = Rect2(768, 0, 384, 216)
+region = Rect2(2304, 0, 1152, 648)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hyemw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtpp8")
+"texture": SubResource("AtlasTexture_mitmw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qbpjo")
+"texture": SubResource("AtlasTexture_6gbh7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n4pp6")
+"texture": SubResource("AtlasTexture_e5dea")
 }],
 "loop": true,
 "name": &"idle",
@@ -48,15 +48,15 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnbtv"]
 atlas = ExtResource("7_qtpp8")
-region = Rect2(0, 0, 70, 35)
+region = Rect2(0, 0, 200, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwa32"]
 atlas = ExtResource("8_n4pp6")
-region = Rect2(0, 0, 70, 35)
+region = Rect2(0, 0, 200, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ggar8"]
 atlas = ExtResource("8_n4pp6")
-region = Rect2(70, 0, 70, 35)
+region = Rect2(200, 0, 200, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_501mu"]
 animations = [{
@@ -93,7 +93,7 @@ script = ExtResource("1_7c4td")
 sprite_frames = SubResource("SpriteFrames_hyemw")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.39812
+frame_progress = 0.0748073
 centered = false
 
 [node name="menuMusica" type="AudioStreamPlayer" parent="."]
@@ -104,19 +104,26 @@ parameters/looping = true
 
 [node name="texto" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 25.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 7.0
+offset_right = 289.0
+offset_bottom = 95.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_6gbh7")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 25
 text = "Escolha os personagens e clique em “Começar”
 Ou pressione “Esc” para retornar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of cdff868 (Mudança na proporção do jogo)
 [node name="botoes" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
@@ -130,6 +137,7 @@ grow_vertical = 0
 
 [node name="botoesP1" type="TextureRect" parent="botoes"]
 layout_mode = 2
+<<<<<<< HEAD
 size_flags_vertical = 4
 texture = ExtResource("4_hyemw")
 
@@ -137,6 +145,12 @@ texture = ExtResource("4_hyemw")
 layout_mode = 2
 size_flags_horizontal = 3
 
+=======
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("4_hyemw")
+
+>>>>>>> parent of cdff868 (Mudança na proporção do jogo)
 [node name="comecarButton" type="TextureButton" parent="botoes"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
@@ -161,6 +175,7 @@ one_shot = true
 [node name="confirmarSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
 stream = ExtResource("9_qbpjo")
 
+<<<<<<< HEAD
 [node name="espaco2" type="Control" parent="botoes"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -171,21 +186,24 @@ size_flags_horizontal = 8
 texture = ExtResource("5_sofw2")
 
 >>>>>>> parent of eeedaca (Update selecao.tscn)
+=======
+[node name="botoesP2" type="TextureRect" parent="botoes"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("5_sofw2")
+
+>>>>>>> parent of cdff868 (Mudança na proporção do jogo)
 [node name="selecao" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 407)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -78.0
-offset_bottom = 50.0
+offset_top = -228.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="espaco4" type="Control" parent="selecao"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
 
 [node name="BannerP1_Display" type="TextureRect" parent="selecao"]
 layout_mode = 2
@@ -235,68 +253,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="espaco3" type="Control" parent="selecao"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-
-[node name="botoes" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -56.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="botoesP1" type="TextureRect" parent="botoes"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture = ExtResource("4_hyemw")
-
-[node name="comecarButton" type="TextureButton" parent="botoes"]
-custom_minimum_size = Vector2(75, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../selecao/GridContainer/Char3")
-
-[node name="animacao" type="AnimatedSprite2D" parent="botoes/comecarButton"]
-sprite_frames = SubResource("SpriteFrames_501mu")
-animation = &"idle"
-autoplay = "idle"
-centered = false
-offset = Vector2(2.5, 0)
-
-[node name="erroSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
-stream = ExtResource("8_qtpp8")
-volume_db = -14.054
-
-[node name="erroTimer" type="Timer" parent="botoes/comecarButton"]
-wait_time = 5.0
-one_shot = true
-
-[node name="confirmarSom" type="AudioStreamPlayer" parent="botoes/comecarButton"]
-stream = ExtResource("9_qbpjo")
-
-[node name="botoesP2" type="TextureRect" parent="botoes"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-texture = ExtResource("5_sofw2")
-
 [node name="P2_cursor" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 27.0
-offset_bottom = 27.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("12_ggar8")
 
 [node name="P1_cursor" type="TextureRect" parent="."]
-layout_mode = 1
-offset_right = 27.0
-offset_bottom = 27.0
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
 texture = ExtResource("13_501mu")
 
 [connection signal="pressed" from="botoes/comecarButton" to="." method="_on_comecar_button_pressed"]
