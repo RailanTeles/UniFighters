@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dspqof6drk0pd"]
+[gd_scene load_steps=16 format=3 uid="uid://dspqof6drk0pd"]
 
 [ext_resource type="Script" uid="uid://cng4yeehlh4tp" path="res://selecao_mapa.gd" id="1_eaofe"]
 [ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_q3dfb"]
 [ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_vx4ko"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_re8yh"]
 [ext_resource type="Texture2D" uid="uid://boc2ld2iw6a57" path="res://assets/selecaoMapa/unifanFrente.png" id="4_v36c2"]
-[ext_resource type="AudioStream" uid="uid://2asv4tswniil" path="res://assets/musics/random.mp3" id="4_vaqat"]
 [ext_resource type="Texture2D" uid="uid://m2pbkjvgrqx4" path="res://assets/selecaoMapa/cenarioQuadra.png" id="5_qxwtb"]
 [ext_resource type="Texture2D" uid="uid://cppbys4dpq66l" path="res://assets/selecaoMapa/cenarioPatio.png" id="6_edfhd"]
 [ext_resource type="Texture2D" uid="uid://bv7r7tfniujg" path="res://assets/selecaoMapa/iconeP1Cenario.png" id="7_edfhd"]
@@ -62,13 +61,6 @@ stream = ExtResource("2_vx4ko")
 volume_db = -14.054
 autoplay = true
 parameters/looping = true
-
-[node name="aleatorioSom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_vaqat")
-volume_db = -14.054
-
-[node name="confirmarSom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_k6tkr")
 
 [node name="texto" type="Label" parent="."]
 layout_mode = 1
@@ -148,3 +140,6 @@ layout_mode = 0
 offset_right = 420.0
 offset_bottom = 236.0
 texture = ExtResource("9_k6tkr")
+
+[node name="confirmarSom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k6tkr")

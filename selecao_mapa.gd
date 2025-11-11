@@ -6,6 +6,8 @@ var p2_foco_atual: Control
 
 # Sons
 @onready var confirmar_som: AudioStreamPlayer = $confirmarSom
+@onready var menu_musica: AudioStreamPlayer = $menuMusica
+@onready var aleatorio_som: AudioStreamPlayer = $aleatorioSom
 
 # Mapas
 @onready var mapa_1: TextureRect = $containerMapas/gridMapas/mapa1
@@ -20,12 +22,21 @@ var p2_foco_atual: Control
 # Mapa Selecionado
 var mapa_selecionado_p1 = null
 var mapa_selecionado_p2 = null
+var mapa_selecionado_aleatorio = null
 
 var p1_selecionou = false
 var p2_selecionou = false
 var esta_mudando_cena = false
 
+var CAMINHOS_MAPAS = {}
+
 func _ready():
+	randomize()
+	CAMINHOS_MAPAS = {
+		mapa_1: "res://mapas/mapa_patio.tscn",
+		mapa_2: "res://mapas/mapa_quadra.tscn",
+		mapa_3: "res://mapas/mapa_ginasio.tscn"
+	}
 	cursor_aleatorio.visible = false
 	p1_foco_atual = mapa_1
 	p2_foco_atual = mapa_2
@@ -127,9 +138,30 @@ func seSelecinou():
 	if esta_mudando_cena:
 		return
 	if mapa_selecionado_p1 != null and mapa_selecionado_p2 != null:
+		esta_mudando_cena = true
 		if mapa_selecionado_p1 == mapa_selecionado_p2:
-			# Aqui provalvemente uma varável global vai receber o mapa
-			esta_mudando_cena = true
+			# Salvar na variável global
 			get_tree().change_scene_to_file("res://menu.tscn")
 		else:
-			print("diferentes") # Se forem diferentes, sorteia
+			menu_musica.stop()
+			cursor_aleatorio.global_position = p1_cursor.global_position
+			cursor_aleatorio.visible = true
+			var numero =  randi_range(1,10)
+			for i in numero:
+				await get_tree().create_timer(0.5).timeout
+				aleatorio_som.play()
+				await aleatorio_som.finished
+				if cursor_aleatorio.global_position == p1_cursor.global_position:
+					cursor_aleatorio.global_position = p2_cursor.global_position
+				else:
+					cursor_aleatorio.global_position = p1_cursor.global_position
+			aleatorio_som.play()
+			
+			if cursor_aleatorio.global_position == p1_cursor.global_position:
+				mapa_selecionado_aleatorio = mapa_selecionado_p1
+			else:
+				mapa_selecionado_aleatorio = mapa_selecionado_p2
+			await aleatorio_som.finished
+			
+			# Salvar na varável global
+			# Passar para a próxima tela
