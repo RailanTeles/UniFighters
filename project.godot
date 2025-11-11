@@ -15,6 +15,10 @@ run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DadosdaPartida="*res://DadosdaPartida.gd"
+
 [display]
 
 window/size/resizable=false

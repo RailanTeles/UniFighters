@@ -64,6 +64,13 @@ var dados_banners_p2 = {
 	"Sprintora" : banner_sprintora_p2
 }
 
+var CAMINHOS_PERSONAGENS = {
+	"Regulata": "res://personagens/regulata/regulata.tscn",
+	"Cabomante": "res://personagens/cabomante/cabomante.tscn",
+	"Imperatech": "res://personagens/imperatech/imperatech.tscn",
+	"Sprintora": "res://personagens/sprintora/sprintora.tscn"
+}
+
 var dados_caracteristicas = {}
 
 func _ready():
@@ -159,6 +166,8 @@ func _on_comecar_button_pressed() -> void:
 			animacao.play("pressionado")
 			await animacao.animation_finished
 		await get_tree().create_timer(1).timeout
+		DadosdaPartida.caminho_personagem_p1 = CAMINHOS_PERSONAGENS[p1_personagem_selecionado]
+		DadosdaPartida.caminho_personagem_p2 = CAMINHOS_PERSONAGENS[p2_personagem_selecionado]
 		get_tree().change_scene_to_file("res://selecao_mapa.tscn")
 	else:
 		texto.text = texto_erro

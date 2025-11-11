@@ -140,7 +140,7 @@ func seSelecinou():
 	if mapa_selecionado_p1 != null and mapa_selecionado_p2 != null:
 		esta_mudando_cena = true
 		if mapa_selecionado_p1 == mapa_selecionado_p2:
-			# Salvar na variável global
+			DadosdaPartida.caminho_mapa = CAMINHOS_MAPAS[mapa_selecionado_p1]
 			get_tree().change_scene_to_file("res://menu.tscn")
 		else:
 			menu_musica.stop()
@@ -163,5 +163,5 @@ func seSelecinou():
 				mapa_selecionado_aleatorio = mapa_selecionado_p2
 			await aleatorio_som.finished
 			
-			# Salvar na varável global
+			DadosdaPartida.caminho_mapa = CAMINHOS_MAPAS[mapa_selecionado_aleatorio]
 			# Passar para a próxima tela
