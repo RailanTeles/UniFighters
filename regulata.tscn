@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dt3pv0bfcm6cx"]
+[gd_scene load_steps=62 format=3 uid="uid://dt3pv0bfcm6cx"]
 
 [ext_resource type="Script" uid="uid://coj0s3lgfa5hr" path="res://regulata.gd" id="1_defoa"]
 [ext_resource type="Texture2D" uid="uid://buhg3q84c67ry" path="res://assets/personagens/regulata/sprites/jamylle_idle.png" id="1_e8wdl"]
@@ -341,6 +341,30 @@ size = Vector2(90, 190.5)
 
 [sub_resource type="Animation" id="Animation_kkpxh"]
 length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimado:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"receber_dano"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimado:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_sf52j"]
 resource_name = "golpe_fraco1"
@@ -572,6 +596,35 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_prbsw"]
+resource_name = "receber_dano"
+length = 0.2
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimado:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"receber_dano"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimado:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ep2x"]
 _data = {
 &"RESET": SubResource("Animation_kkpxh"),
@@ -579,7 +632,8 @@ _data = {
 &"golpe_fraco2": SubResource("Animation_2ep2x"),
 &"golpe_fraco3": SubResource("Animation_c7xcj"),
 &"golpe_fraco_agachado": SubResource("Animation_43llg"),
-&"golpe_fraco_ar": SubResource("Animation_0y8oa")
+&"golpe_fraco_ar": SubResource("Animation_0y8oa"),
+&"receber_dano": SubResource("Animation_prbsw")
 }
 
 [node name="Regulata" type="CharacterBody2D"]
@@ -591,7 +645,7 @@ shape = SubResource("CapsuleShape2D_r4uyt")
 [node name="SpriteAnimado" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_1qjka")
-animation = &"golpe_fraco1"
+animation = &"receber_dano"
 autoplay = "idle"
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -622,6 +676,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_2ep2x")
 }
 
+[connection signal="animation_finished" from="SpriteAnimado" to="." method="_on_sprite_animado_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="TimerCombo" to="." method="_on_timer_combo_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
