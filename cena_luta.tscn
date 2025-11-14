@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://crip3kp5bp0ow"]
 
+[ext_resource type="Script" uid="uid://cmbeyqs8qxvrq" path="res://cena_luta.gd" id="1_0so0d"]
 [ext_resource type="FontFile" uid="uid://bsmamfd8egop4" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="1_mrpgd"]
-[ext_resource type="Texture2D" uid="uid://bjil17crj3mmr" path="res://assets/testeIcone.png" id="1_qssao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga3s"]
 size = Vector2(1152, 57)
@@ -50,6 +50,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="luta" type="Node2D"]
+script = ExtResource("1_0so0d")
 
 [node name="colisao" type="StaticBody2D" parent="."]
 
@@ -79,7 +80,6 @@ size_flags_horizontal = 3
 [node name="iconeP1" type="TextureRect" parent="HUD/P1"]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("1_qssao")
 
 [node name="infosP1" type="VBoxContainer" parent="HUD/P1"]
 layout_mode = 2
@@ -156,24 +156,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="infosP1" type="VBoxContainer" parent="HUD/P2"]
+[node name="infosP2" type="VBoxContainer" parent="HUD/P2"]
 layout_mode = 2
 alignment = 2
 
-[node name="BarraVidaP1" type="PanelContainer" parent="HUD/P2/infosP1"]
+[node name="BarraVidaP2" type="PanelContainer" parent="HUD/P2/infosP2"]
 custom_minimum_size = Vector2(380, 55)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0so0d")
 
-[node name="VidaP1" type="ColorRect" parent="HUD/P2/infosP1/BarraVidaP1"]
+[node name="VidaP2" type="ColorRect" parent="HUD/P2/infosP2/BarraVidaP2"]
 layout_mode = 2
 color = Color(0.815686, 0.239216, 0.239216, 1)
 
-[node name="AuraP1" type="HBoxContainer" parent="HUD/P2/infosP1"]
+[node name="AuraP2" type="HBoxContainer" parent="HUD/P2/infosP2"]
 layout_mode = 2
 alignment = 2
 
-[node name="NumAuraP1" type="Label" parent="HUD/P2/infosP1/AuraP1"]
+[node name="NumAuraP2" type="Label" parent="HUD/P2/infosP2/AuraP2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0235294, 0.141176, 0.364706, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -182,41 +182,46 @@ theme_override_fonts/font = ExtResource("1_mrpgd")
 theme_override_font_sizes/font_size = 60
 text = "0"
 
-[node name="espaco2" type="Control" parent="HUD/P2/infosP1/AuraP1"]
+[node name="espaco2" type="Control" parent="HUD/P2/infosP2/AuraP2"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="BarraAuraP1" type="PanelContainer" parent="HUD/P2/infosP1/AuraP1"]
+[node name="BarraAuraP2" type="PanelContainer" parent="HUD/P2/infosP2/AuraP2"]
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qssao")
 
-[node name="AuraP1" type="ColorRect" parent="HUD/P2/infosP1/AuraP1/BarraAuraP1"]
+[node name="AuraP2" type="ColorRect" parent="HUD/P2/infosP2/AuraP2/BarraAuraP2"]
 layout_mode = 2
 color = Color(0.0235294, 0.141176, 0.364706, 1)
 
-[node name="VitoriasP1" type="HBoxContainer" parent="HUD/P2/infosP1"]
+[node name="VitoriasP2" type="HBoxContainer" parent="HUD/P2/infosP2"]
 layout_mode = 2
 alignment = 2
 
-[node name="V1P1" type="PanelContainer" parent="HUD/P2/infosP1/VitoriasP1"]
+[node name="V1P2" type="PanelContainer" parent="HUD/P2/infosP2/VitoriasP2"]
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_231xm")
 
-[node name="espaco" type="Control" parent="HUD/P2/infosP1/VitoriasP1"]
+[node name="espaco" type="Control" parent="HUD/P2/infosP2/VitoriasP2"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="V2P1" type="PanelContainer" parent="HUD/P2/infosP1/VitoriasP1"]
+[node name="V2P2" type="PanelContainer" parent="HUD/P2/infosP2/VitoriasP2"]
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_231xm")
 
-[node name="iconeP1" type="TextureRect" parent="HUD/P2"]
+[node name="iconeP2" type="TextureRect" parent="HUD/P2"]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("1_qssao")
 flip_h = true
+
+[node name="P1_StartPoint" type="Marker2D" parent="."]
+position = Vector2(75, 547)
+
+[node name="P2_StartPoint" type="Marker2D" parent="."]
+position = Vector2(1060, 556)

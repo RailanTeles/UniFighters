@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fqag6kq50cxt"
-path="res://.godot/imported/jamylle_aterrissar.png-3a30344af548d26f5b530248bc428ef4.ctex"
+uid="uid://cbp8b4pfe88g6"
+path="res://.godot/imported/cenario_frente.png-c33a90da1e793fb2717b5acb5867129c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/personagens/regulata/sprites/jamylle_aterrissar.png"
-dest_files=["res://.godot/imported/jamylle_aterrissar.png-3a30344af548d26f5b530248bc428ef4.ctex"]
+source_file="res://assets/mapas/cenario_frente.png"
+dest_files=["res://.godot/imported/cenario_frente.png-c33a90da1e793fb2717b5acb5867129c.ctex"]
 
 [params]
 

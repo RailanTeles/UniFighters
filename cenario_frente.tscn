@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bau5t2cgnydrx"]
+
+[ext_resource type="Texture2D" uid="uid://cbp8b4pfe88g6" path="res://assets/mapas/cenario_frente.png" id="1_gnuob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v87sh"]
+atlas = ExtResource("1_gnuob")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljqhe"]
+atlas = ExtResource("1_gnuob")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s70ft"]
+atlas = ExtResource("1_gnuob")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqdre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v87sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljqhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s70ft")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="cenario_frente" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lqdre")
+animation = &"idle"
+autoplay = "idle"
+centered = false

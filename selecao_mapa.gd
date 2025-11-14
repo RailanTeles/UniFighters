@@ -33,7 +33,7 @@ var CAMINHOS_MAPAS = {}
 func _ready():
 	randomize()
 	CAMINHOS_MAPAS = {
-		mapa_1: "res://mapas/mapa_patio.tscn",
+		mapa_1: "res://cenario_frente.tscn",
 		mapa_2: "res://mapas/mapa_quadra.tscn",
 		mapa_3: "res://mapas/mapa_ginasio.tscn"
 	}
@@ -141,7 +141,7 @@ func seSelecinou():
 		esta_mudando_cena = true
 		if mapa_selecionado_p1 == mapa_selecionado_p2:
 			DadosdaPartida.caminho_mapa = CAMINHOS_MAPAS[mapa_selecionado_p1]
-			get_tree().change_scene_to_file("res://menu.tscn")
+			get_tree().change_scene_to_file("res://cena_luta.tscn")
 		else:
 			menu_musica.stop()
 			cursor_aleatorio.global_position = p1_cursor.global_position
@@ -164,4 +164,4 @@ func seSelecinou():
 			await aleatorio_som.finished
 			
 			DadosdaPartida.caminho_mapa = CAMINHOS_MAPAS[mapa_selecionado_aleatorio]
-			# Passar para a próxima tela
+			get_tree().change_scene_to_file("res://cena_luta.tscn")

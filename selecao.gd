@@ -64,8 +64,8 @@ var dados_banners_p2 = {
 	"Sprintora" : banner_sprintora_p2
 }
 
-var CAMINHOS_PERSONAGENS = {
-	"Regulata": "res://personagens/regulata/regulata.tscn",
+var CAMINHOS_PERSONAGENS = { 
+	"Regulata": "res://regulata.tscn",
 	"Cabomante": "res://personagens/cabomante/cabomante.tscn",
 	"Imperatech": "res://personagens/imperatech/imperatech.tscn",
 	"Sprintora": "res://personagens/sprintora/sprintora.tscn"
