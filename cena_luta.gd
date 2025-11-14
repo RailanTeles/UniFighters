@@ -4,6 +4,7 @@ extends Node2D
 @onready var p2_start_position = $P2_StartPoint
 @onready var icone_p1: TextureRect = $HUD/P1/iconeP1
 @onready var icone_p2: TextureRect = $HUD/P2/iconeP2
+@onready var tempo_texto: Label = $HUD/TempoContainer/TempoTexto
 
 # --- Referências de Barras ---
 @onready var barra_vida_p1: TextureProgressBar = $HUD/P1/infosP1/barra_vida_p1
@@ -26,6 +27,7 @@ var estilo_vitoria = preload("res://assets/themes/estilo_vitoria.tres") # O arqu
 # Referências dos jogadores (para podermos resetá-los)
 var p1: CharacterBody2D
 var p2: CharacterBody2D
+var mapa: Node
 
 # (Seu dicionário de ícones)
 var jamylle_textura = preload("res://assets/personagens/regulata/icones/RegulataIconeGrande.png")
@@ -36,7 +38,7 @@ var icone_personagens = {
 
 func _ready():
 	# 1. Instanciar o mapa
-	var mapa = load(DadosdaPartida.caminho_mapa).instantiate()
+	mapa = load(DadosdaPartida.caminho_mapa).instantiate()
 	mapa.z_index = -10
 	add_child(mapa)
 
@@ -147,6 +149,7 @@ func _checar_fim_da_partida():
 func _resetar_round():
 	p1.resetar_estado()
 	p2.resetar_estado()
+	mapa.resetar_audio()
 	
 	p1.global_position = p1_start_position.global_position
 	p2.global_position = p2_start_position.global_position
