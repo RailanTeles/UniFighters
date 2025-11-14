@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_1hcjh"]
 [ext_resource type="Script" uid="uid://csjapbbhnym4t" path="res://selecao.gd" id="1_7c4td"]
-[ext_resource type="AudioStream" uid="uid://c10r6m7ajvu5s" path="res://assets/musics/menu.ogg" id="2_mitmw"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_6gbh7"]
+[ext_resource type="AudioStream" uid="uid://bviqrnnugm0fh" path="res://assets/musics/menu-musica.mp3" id="3_n4pp6"]
 [ext_resource type="Texture2D" uid="uid://pubqoa4mving" path="res://assets/grupoBotaoP1.png" id="4_hyemw"]
 [ext_resource type="Texture2D" uid="uid://e46hbbkevedd" path="res://assets/grupoBotaoP2.png" id="5_sofw2"]
 [ext_resource type="Texture2D" uid="uid://nsc05wbhbofc" path="res://assets/selecaoPersonagem/comecarNormal.png" id="7_qtpp8"]
@@ -97,7 +97,7 @@ frame_progress = 0.0748073
 centered = false
 
 [node name="menuMusica" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_mitmw")
+stream = ExtResource("3_n4pp6")
 volume_db = -14.054
 autoplay = true
 parameters/looping = true

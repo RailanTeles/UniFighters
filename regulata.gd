@@ -274,7 +274,7 @@ func _desativar_hitbox():
 # -----------------------------------------------------------------
 func resetar_estado():
 	vida_atual = vida_max
-	aura_atual = 0.0 # Ou o valor inicial que você preferir
+	aura_atual = 0.0
 	esta_morto = false
 	pode_agir = true
 	esta_em_hitstun = false

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bau5t2cgnydrx"]
+[gd_scene load_steps=7 format=3 uid="uid://bau5t2cgnydrx"]
 
 [ext_resource type="Texture2D" uid="uid://cbp8b4pfe88g6" path="res://assets/mapas/cenario_frente.png" id="1_gnuob"]
+[ext_resource type="AudioStream" uid="uid://cqjgcpmib62rg" path="res://assets/musics/musica-frente.mp3" id="2_v87sh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v87sh"]
 atlas = ExtResource("1_gnuob")
@@ -36,3 +37,8 @@ sprite_frames = SubResource("SpriteFrames_lqdre")
 animation = &"idle"
 autoplay = "idle"
 centered = false
+
+[node name="cenario_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v87sh")
+autoplay = true
+parameters/looping = true
