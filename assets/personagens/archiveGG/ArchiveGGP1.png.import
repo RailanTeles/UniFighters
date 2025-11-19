@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6x0562tqb7jn"
-path="res://.godot/imported/SprintoraIconeGrande.png-7d0f116f499dabf9a88c6240f79f9308.ctex"
+uid="uid://buryo0roru52r"
+path="res://.godot/imported/ArchiveGGP1.png-d16313926a133f03f14d0ae52d668778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/personagens/sprintora/icones/SprintoraIconeGrande.png"
-dest_files=["res://.godot/imported/SprintoraIconeGrande.png-7d0f116f499dabf9a88c6240f79f9308.ctex"]
+source_file="res://assets/personagens/archiveGG/ArchiveGGP1.png"
+dest_files=["res://.godot/imported/ArchiveGGP1.png-d16313926a133f03f14d0ae52d668778.ctex"]
 
 [params]
 

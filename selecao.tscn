@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://blnqangnnf6id" path="res://assets/personagens/cabomante/icone/CabomanteIcone.png" id="9_n4pp6"]
 [ext_resource type="AudioStream" uid="uid://butsawnp0nia1" path="res://assets/musics/botaoConfirmar.mp3" id="9_qbpjo"]
 [ext_resource type="Texture2D" uid="uid://csf4u77chists" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
-[ext_resource type="Texture2D" uid="uid://b0pwqmdlcor52" path="res://assets/personagens/sprintora/icones/SprintoraIcone.png" id="11_iwa32"]
 [ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
 [ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
+[ext_resource type="Texture2D" uid="uid://0tpimasnly46" path="res://assets/personagens/archiveGG/ArchiveGGIcone.png" id="14_n4pp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
 atlas = ExtResource("1_1hcjh")
@@ -215,7 +215,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Char3")
 focus_neighbor_top = NodePath("../Char2")
 focus_neighbor_bottom = NodePath("../../../botoes/comecarButton")
-texture_normal = ExtResource("11_iwa32")
+texture_normal = ExtResource("14_n4pp6")
 
 [node name="espaco2" type="Control" parent="selecao"]
 custom_minimum_size = Vector2(5, 0)

@@ -47,28 +47,28 @@ var banner_cabomante_p1 = preload("res://assets/personagens/cabomante/icone/Cabo
 var banner_cabomante_p2 = preload("res://assets/personagens/cabomante/icone/CabomanteP2.png")
 var banner_imperatech_p1 = preload("res://assets/personagens/imperatech/icone/ImperatechP1.png")
 var banner_imperatech_p2 = preload("res://assets/personagens/imperatech/icone/ImperatechP2.png")
-var banner_sprintora_p1 = preload("res://assets/personagens/sprintora/icones/SprintoraP1.png")
-var banner_sprintora_p2 = preload("res://assets/personagens/sprintora/icones/SprintoraP2.png")
+var banner_archivegg_p1 = preload("res://assets/personagens/archiveGG/ArchiveGGP1.png")
+var banner_archivegg_p2 = preload("res://assets/personagens/archiveGG/ArchiveGGP2.png")
 
 var dados_banners_p1 = {
 	"Regulata" : banner_regulata_p1,
 	"Cabomante" : banner_cabomante_p1,
 	"Imperatech" : banner_imperatech_p1,
-	"Sprintora" : banner_sprintora_p1
+	"ArchiveGG" : banner_archivegg_p1
 }
 
 var dados_banners_p2 = {
 	"Regulata" : banner_regulata_p2,
 	"Cabomante" : banner_cabomante_p2,
 	"Imperatech" : banner_imperatech_p2,
-	"Sprintora" : banner_sprintora_p2
+	"ArchiveGG" : banner_archivegg_p2
 }
 
 var CAMINHOS_PERSONAGENS = { 
 	"Regulata": "res://regulata.tscn",
 	"Cabomante": "res://personagens/cabomante/cabomante.tscn",
 	"Imperatech": "res://personagens/imperatech/imperatech.tscn",
-	"Sprintora": "res://personagens/sprintora/sprintora.tscn"
+	"ArchiveGG": "res://personagens/sprintora/sprintora.tscn"
 }
 
 var dados_caracteristicas = {}
@@ -78,7 +78,7 @@ func _ready():
 		char_1 : "Regulata",
 		char_2 : "Cabomante",
 		char_3 : "Imperatech",
-		char_4 : "Sprintora"
+		char_4 : "ArchiveGG"
 	}
 	banner_p1_display.texture = banner_padrao_p1
 	banner_p2_display.texture = banner_padrao_p2
