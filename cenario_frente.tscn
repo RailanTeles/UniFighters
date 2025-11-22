@@ -42,5 +42,6 @@ script = ExtResource("2_ljqhe")
 
 [node name="cenario_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_v87sh")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true

@@ -4,7 +4,10 @@ extends Node2D
 @onready var p2_start_position = $P2_StartPoint
 @onready var icone_p1: TextureRect = $HUD/P1/iconeP1
 @onready var icone_p2: TextureRect = $HUD/P2/iconeP2
+
 @onready var tempo_texto: Label = $HUD/TempoContainer/TempoTexto
+@onready var timer_round: Timer = $TimerRound
+var tempo_atual = 80
 
 # --- Referências de Barras ---
 @onready var barra_vida_p1: TextureProgressBar = $HUD/P1/infosP1/barra_vida_p1
@@ -22,14 +25,14 @@ extends Node2D
 var vitorias_p1 = 0
 var vitorias_p2 = 0
 var round_em_andamento = true
-var estilo_vitoria = preload("res://assets/themes/estilo_vitoria.tres") # O arquivo que você criou
+var estilo_vitoria = preload("res://assets/themes/estilo_vitoria.tres")
 
 # Referências dos jogadores (para podermos resetá-los)
 var p1: CharacterBody2D
 var p2: CharacterBody2D
 var mapa: Node
 
-# (Seu dicionário de ícones)
+# Dicionário e ícones
 var jamylle_textura = preload("res://assets/personagens/regulata/icones/RegulataIconeGrande.png")
 var icone_personagens = {
 	"res://regulata.tscn" : jamylle_textura
@@ -37,6 +40,8 @@ var icone_personagens = {
 }
 
 func _ready():
+	tempo_texto.text = str(tempo_atual)
+	
 	# 1. Instanciar o mapa
 	mapa = load(DadosdaPartida.caminho_mapa).instantiate()
 	mapa.z_index = -10
@@ -56,7 +61,7 @@ func _ready():
 	p1.player_id = 1
 	p2.player_id = 2
 	
-	# 5. CONECTAR TODOS OS SINAIS!
+	# 5. CONECTAR TODOS OS SINAIS
 	p1.vida_mudou.connect(_on_p1_vida_mudou)
 	p2.vida_mudou.connect(_on_p2_vida_mudou)
 	p1.aura_mudou.connect(_on_p1_aura_mudou)
@@ -150,6 +155,9 @@ func _resetar_round():
 	p1.resetar_estado()
 	p2.resetar_estado()
 	mapa.resetar_audio()
+	timer_round.start()
+	tempo_atual = 80
+	tempo_texto.text = str(tempo_atual)
 	
 	p1.global_position = p1_start_position.global_position
 	p2.global_position = p2_start_position.global_position
@@ -160,3 +168,25 @@ func _resetar_round():
 	
 	# Permite que o próximo round comece
 	round_em_andamento = true
+
+func _on_timer_round_timeout() -> void:
+	# Só diminui o tempo se o round estiver rolando
+	if round_em_andamento and tempo_atual > 0:
+		tempo_atual -= 1
+		tempo_texto.text = str(tempo_atual)
+		
+		# Se o tempo chegar a zero
+		if tempo_atual == 0:
+			_on_tempo_acabou()
+
+# Chamada quando o tempo chega a 0
+func _on_tempo_acabou():
+	# Para o timer e o round
+	timer_round.stop()
+	# Lógica para decidir o vencedor pelo tempo
+	if p1.vida_atual > p2.vida_atual:
+		_on_p2_morreu() # P1 ganha
+	elif p2.vida_atual > p1.vida_atual:
+		_on_p1_morreu() # P2 ganha
+	else:
+		_resetar_round() # Empate
