@@ -9,7 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://bviqrnnugm0fh" path="res://assets/musics/menu-musica.mp3" id="7_iqepy"]
 [ext_resource type="AudioStream" uid="uid://butsawnp0nia1" path="res://assets/musics/botaoConfirmar.mp3" id="8_iqepy"]
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="8_kk3ma"]
-[ext_resource type="StyleBox" uid="uid://ooennb1qq826" path="res://assets/themes/botao_selecionado_menu.tres" id="10_iqepy"]
+[ext_resource type="StyleBox" uid="uid://dt85bhegj51dp" path="res://assets/themes/botaoSelecionado.tres" id="10_h1wq0"]
+[ext_resource type="StyleBox" uid="uid://o7cpkumk24hd" path="res://assets/themes/botaoNormal.tres" id="11_dwrpx"]
 
 [sub_resource type="Animation" id="Animation_iqepy"]
 length = 0.001
@@ -159,15 +160,8 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqepy"]
-bg_color = Color(0.184314, 0.372549, 0.45098, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jspdm"]
-bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+bg_color = Color(0.368627, 0.588235, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -178,14 +172,14 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1wq0"]
-bg_color = Color(0.184314, 0.372549, 0.45098, 1)
+bg_color = Color(0.0235294, 0.141176, 0.364706, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7jxm"]
-bg_color = Color(0.0352941, 0.129412, 0.168627, 1)
+bg_color = Color(0.368627, 0.588235, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -196,7 +190,7 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwrpx"]
-bg_color = Color(0.184314, 0.372549, 0.45098, 1)
+bg_color = Color(0.0235294, 0.141176, 0.364706, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -263,7 +257,6 @@ parameters/looping = true
 stream = ExtResource("8_iqepy")
 
 [node name="menuOpcoes" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -295,9 +288,9 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
-theme_override_styles/hover = ExtResource("10_iqepy")
-theme_override_styles/normal = SubResource("StyleBoxFlat_iqepy")
+theme_override_styles/focus = ExtResource("10_h1wq0")
+theme_override_styles/hover = ExtResource("10_h1wq0")
+theme_override_styles/normal = ExtResource("11_dwrpx")
 text = "Jogar"
 
 [node name="creditosBotao" type="Button" parent="menuOpcoes/VBoxContainer"]
@@ -305,7 +298,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
+theme_override_styles/focus = ExtResource("10_h1wq0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jspdm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_h1wq0")
 text = "Créditos"
@@ -315,7 +308,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_kk3ma")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("10_iqepy")
+theme_override_styles/focus = ExtResource("10_h1wq0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g7jxm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dwrpx")
 text = "Sair"

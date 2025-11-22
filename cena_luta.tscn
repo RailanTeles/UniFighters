@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://crip3kp5bp0ow"]
+[gd_scene load_steps=38 format=3 uid="uid://crip3kp5bp0ow"]
 
 [ext_resource type="Script" uid="uid://cmbeyqs8qxvrq" path="res://cena_luta.gd" id="1_0so0d"]
 [ext_resource type="FontFile" uid="uid://bsmamfd8egop4" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="1_mrpgd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b87l2nvjuhq8" path="res://assets/luta/Contagem/2_animated.png" id="8_6j5fh"]
 [ext_resource type="Texture2D" uid="uid://bou7ifiyvgqs7" path="res://assets/luta/Contagem/3_animated.png" id="9_x6hma"]
 [ext_resource type="Texture2D" uid="uid://dlv7l5qfp4p2d" path="res://assets/luta/Contagem/Go_animated.png" id="10_vjcxo"]
+[ext_resource type="AudioStream" uid="uid://b7byx5ii8ij8l" path="res://assets/luta/Contagem/contagem.mp3" id="11_6j5fh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga3s"]
 size = Vector2(1152, 57)
@@ -389,5 +390,9 @@ sprite_frames = SubResource("SpriteFrames_es4an")
 animation = &"go"
 frame = 5
 frame_progress = 1.0
+
+[node name="contagemAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6j5fh")
+volume_db = 15.0
 
 [connection signal="timeout" from="TimerRound" to="." method="_on_timer_round_timeout"]

@@ -12,6 +12,8 @@ var tempo_atual = 80
 
 # ---- Animação -----
 @onready var contagem_sprite: AnimatedSprite2D = $ContagemSprite
+@onready var contagem_audio: AudioStreamPlayer = $contagemAudio
+
 
 # --- Referências de Barras ---
 @onready var barra_vida_p1: TextureProgressBar = $HUD/P1/infosP1/barra_vida_p1
@@ -215,6 +217,7 @@ func _iniciar_contagem():
 	
 	# Toca "3" e espera terminar
 	contagem_sprite.play("3")
+	contagem_audio.play()
 	await contagem_sprite.animation_finished
 	
 	# Toca "2" e espera terminar
