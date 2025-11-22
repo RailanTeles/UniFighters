@@ -5,9 +5,13 @@ extends Node2D
 @onready var icone_p1: TextureRect = $HUD/P1/iconeP1
 @onready var icone_p2: TextureRect = $HUD/P2/iconeP2
 
+# ---- Tempo -----
 @onready var tempo_texto: Label = $HUD/TempoContainer/TempoTexto
 @onready var timer_round: Timer = $TimerRound
 var tempo_atual = 80
+
+# ---- Animação -----
+@onready var contagem_sprite: AnimatedSprite2D = $ContagemSprite
 
 # --- Referências de Barras ---
 @onready var barra_vida_p1: TextureProgressBar = $HUD/P1/infosP1/barra_vida_p1
@@ -41,7 +45,6 @@ var icone_personagens = {
 
 func _ready():
 	tempo_texto.text = str(tempo_atual)
-	
 	# 1. Instanciar o mapa
 	mapa = load(DadosdaPartida.caminho_mapa).instantiate()
 	mapa.z_index = -10
@@ -88,6 +91,8 @@ func _ready():
 	_on_p2_vida_mudou(p2.vida_atual, p2.vida_max)
 	_on_p1_aura_mudou(p1.aura_atual, p1.aura_max)
 	_on_p2_aura_mudou(p2.aura_atual, p2.aura_max)
+	
+	_resetar_round()
 
 # --- Funções de Sinal (Barras de Vida e Aura) ---
 # (As 4 funções _on_pX_vida_mudou e _on_pX_aura_mudou continuam iguais)
@@ -155,19 +160,33 @@ func _resetar_round():
 	p1.resetar_estado()
 	p2.resetar_estado()
 	mapa.resetar_audio()
-	timer_round.start()
-	tempo_atual = 80
-	tempo_texto.text = str(tempo_atual)
+	
+	# TRAVA OS JOGADORES (Eles não vão responder a input/física)
+	p1.set_physics_process(false)
+	p2.set_physics_process(false)
+	p1.set_process(false)
+	p2.set_process(false)
 	
 	p1.global_position = p1_start_position.global_position
 	p2.global_position = p2_start_position.global_position
 	
-	# Opcional: Reseta a velocidade caso eles estivessem em knockback
+	# Força o P1 (Esquerda) a olhar para a Direita
+	p1.sprite.flip_h = false
+	p1.direcao_olhando = 1
+	
+	# Força o P2 (Direita) a olhar para a Esquerda
+	p2.sprite.flip_h = true
+	p2.direcao_olhando = -1
+	
 	p1.velocity = Vector2.ZERO
 	p2.velocity = Vector2.ZERO
 	
-	# Permite que o próximo round comece
-	round_em_andamento = true
+	# Resetar Timer (mas não inicia ainda!)
+	tempo_atual = 80
+	tempo_texto.text = str(tempo_atual)
+	
+	# INICIA A CONTAGEM
+	_iniciar_contagem()
 
 func _on_timer_round_timeout() -> void:
 	# Só diminui o tempo se o round estiver rolando
@@ -190,3 +209,34 @@ func _on_tempo_acabou():
 		_on_p1_morreu() # P2 ganha
 	else:
 		_resetar_round() # Empate
+
+func _iniciar_contagem():
+	contagem_sprite.visible = true
+	
+	# Toca "3" e espera terminar
+	contagem_sprite.play("3")
+	await contagem_sprite.animation_finished
+	
+	# Toca "2" e espera terminar
+	contagem_sprite.play("2")
+	await contagem_sprite.animation_finished
+	
+	# Toca "1" e espera terminar
+	contagem_sprite.play("1")
+	await contagem_sprite.animation_finished
+	
+	# Toca "GO" e DESTRAVA O JOGO
+	contagem_sprite.play("go")
+	
+	# --- COMEÇA O JOGO ---
+	p1.set_physics_process(true)
+	p2.set_physics_process(true)
+	p1.set_process(true)
+	p2.set_process(true)
+	timer_round.start()
+	round_em_andamento = true
+	# ---------------------
+	
+	# Espera a animação "GO" terminar para esconder o sprite
+	await contagem_sprite.animation_finished
+	contagem_sprite.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crip3kp5bp0ow"]
+[gd_scene load_steps=37 format=3 uid="uid://crip3kp5bp0ow"]
 
 [ext_resource type="Script" uid="uid://cmbeyqs8qxvrq" path="res://cena_luta.gd" id="1_0so0d"]
 [ext_resource type="FontFile" uid="uid://bsmamfd8egop4" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="1_mrpgd"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c7ilk4lhewugo" path="res://assets/luta/barra_recheio_vida.png" id="3_76b7b"]
 [ext_resource type="Texture2D" uid="uid://bjq8dttrqfuln" path="res://assets/luta/barra_borda_aura.png" id="4_om7nk"]
 [ext_resource type="Texture2D" uid="uid://blxdkov2gpair" path="res://assets/luta/barra_recheio_aura.png" id="5_tc13t"]
+[ext_resource type="Texture2D" uid="uid://dpujvuh78edcp" path="res://assets/luta/Contagem/1_animated.png" id="7_7ulc3"]
+[ext_resource type="Texture2D" uid="uid://b87l2nvjuhq8" path="res://assets/luta/Contagem/2_animated.png" id="8_6j5fh"]
+[ext_resource type="Texture2D" uid="uid://bou7ifiyvgqs7" path="res://assets/luta/Contagem/3_animated.png" id="9_x6hma"]
+[ext_resource type="Texture2D" uid="uid://dlv7l5qfp4p2d" path="res://assets/luta/Contagem/Go_animated.png" id="10_vjcxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga3s"]
 size = Vector2(1152, 57)
@@ -36,6 +40,176 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etsvb"]
+atlas = ExtResource("7_7ulc3")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa178"]
+atlas = ExtResource("7_7ulc3")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fve4s"]
+atlas = ExtResource("7_7ulc3")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g1g7"]
+atlas = ExtResource("7_7ulc3")
+region = Rect2(3456, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmq5x"]
+atlas = ExtResource("7_7ulc3")
+region = Rect2(4608, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktyae"]
+atlas = ExtResource("8_6j5fh")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kawji"]
+atlas = ExtResource("8_6j5fh")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ep3u"]
+atlas = ExtResource("8_6j5fh")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skoon"]
+atlas = ExtResource("8_6j5fh")
+region = Rect2(3456, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s2hh"]
+atlas = ExtResource("8_6j5fh")
+region = Rect2(4608, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86u65"]
+atlas = ExtResource("9_x6hma")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xv0e"]
+atlas = ExtResource("9_x6hma")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01c5l"]
+atlas = ExtResource("9_x6hma")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odw71"]
+atlas = ExtResource("9_x6hma")
+region = Rect2(3456, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_514xy"]
+atlas = ExtResource("9_x6hma")
+region = Rect2(4608, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7aek"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(0, 0, 1150, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt3ak"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(1150, 0, 1150, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8fri"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(2300, 0, 1150, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgeo3"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(3450, 0, 1150, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek2kl"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(4600, 0, 1150, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnqde"]
+atlas = ExtResource("10_vjcxo")
+region = Rect2(5750, 0, 1150, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es4an"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etsvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa178")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fve4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g1g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmq5x")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktyae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kawji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ep3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skoon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s2hh")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86u65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xv0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01c5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odw71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_514xy")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7aek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt3ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8fri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgeo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek2kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnqde")
+}],
+"loop": false,
+"name": &"go",
+"speed": 6.0
+}]
 
 [node name="luta" type="Node2D"]
 script = ExtResource("1_0so0d")
@@ -207,6 +381,13 @@ position = Vector2(75, 480)
 position = Vector2(1060, 480)
 
 [node name="TimerRound" type="Timer" parent="."]
-autostart = true
+
+[node name="ContagemSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(578, 328)
+sprite_frames = SubResource("SpriteFrames_es4an")
+animation = &"go"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="timeout" from="TimerRound" to="." method="_on_timer_round_timeout"]
