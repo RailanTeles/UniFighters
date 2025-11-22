@@ -14,6 +14,14 @@ var tempo_atual = 80
 @onready var contagem_sprite: AnimatedSprite2D = $ContagemSprite
 @onready var contagem_audio: AudioStreamPlayer = $contagemAudio
 
+# ---- Menu de Pausa ----
+@onready var pausa: Panel = $pausa
+@onready var controles: Panel = $controles
+@onready var retornar_botao: Button = $pausa/pausaOpcoes/VBoxContainer/retornarBotao
+@onready var controles_botao: Button = $pausa/pausaOpcoes/VBoxContainer/controlesBotao
+@onready var sair_botao: Button = $pausa/pausaOpcoes/VBoxContainer/sairBotao
+var _esta_pausado = false
+var _uid_controle = false
 
 # --- Referências de Barras ---
 @onready var barra_vida_p1: TextureProgressBar = $HUD/P1/infosP1/barra_vida_p1
@@ -107,7 +115,31 @@ func _on_p2_vida_mudou(vida_atual_nova, vida_max_nova):
 func _on_p2_aura_mudou(aura_atual_nova, aura_max_nova):
 	barra_aura_p2.value = (float(aura_atual_nova) / float(aura_max_nova)) * 100
 
-# --- NOVAS FUNÇÕES: Lógica de Round ---
+func _input(event):
+	if event is InputEventKey and not contagem_sprite.visible and round_em_andamento:
+		if (event.keycode == KEY_ESCAPE or event.keycode == KEY_ENTER) and event.is_pressed():
+			if not _esta_pausado and not _uid_controle:
+				timer_round.paused = true
+				p1.set_physics_process(false)
+				p2.set_physics_process(false)
+				p1.set_process(false)
+				p2.set_process(false)
+				_esta_pausado = true
+				pausa.visible = true
+				pausa.z_index = 100
+				retornar_botao.grab_focus()
+			elif _esta_pausado and _uid_controle:
+				controles.visible = false
+				_uid_controle = false
+				retornar_botao.grab_focus()
+			else:
+				timer_round.paused = false
+				pausa.visible = false
+				_esta_pausado = false
+				p1.set_physics_process(true)
+				p2.set_physics_process(true)
+				p1.set_process(true)
+				p2.set_process(true)
 
 # Chamada quando o P1 morre (P2 ganha o round)
 func _on_p1_morreu():
@@ -191,7 +223,8 @@ func _resetar_round():
 	_iniciar_contagem()
 
 func _on_timer_round_timeout() -> void:
-	# Só diminui o tempo se o round estiver rolando
+	if _esta_pausado:
+		return
 	if round_em_andamento and tempo_atual > 0:
 		tempo_atual -= 1
 		tempo_texto.text = str(tempo_atual)
@@ -243,3 +276,20 @@ func _iniciar_contagem():
 	# Espera a animação "GO" terminar para esconder o sprite
 	await contagem_sprite.animation_finished
 	contagem_sprite.visible = false
+
+func _on_retornar_botao_pressed() -> void:
+	pausa.visible = false
+	_esta_pausado = false
+	p1.set_physics_process(true)
+	p2.set_physics_process(true)
+	p1.set_process(true)
+	p2.set_process(true)
+
+func _on_controles_botao_pressed() -> void:
+	controles.visible = true
+	_uid_controle = true
+	controles_botao.release_focus()
+
+func _on_sair_botao_pressed() -> void:
+	get_viewport().set_input_as_handled()
+	get_tree().change_scene_to_file("res://selecao.tscn")
