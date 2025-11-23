@@ -17,7 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # --- Novas Constantes de Knockback ---
 const KNOCKBACK_FRACO = 80.0
-const KNOCKBACK_FORTE_X = 160.0
+const KNOCKBACK_FORTE_X = 1200.0
 const KNOCKBACK_FORTE_Y = -100.0 
 
 var player_id = 1 
@@ -188,7 +188,7 @@ func levar_dano(quantidade: int, e_forte: bool, direcao_knockback: int):
 		esta_morto = true
 		animation_player.play("receber_dano")
 		emit_signal("morreu")
-		return # Não aplica knockback
+		return 
 
 	# --- Lógica de Animação e Knockback (se NÃO estiver morto) ---
 	if e_forte:
