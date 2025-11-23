@@ -16,7 +16,7 @@ var tempo_atual = 80
 
 # ---- Menu de Pausa ----
 @onready var pausa: Panel = $pausa
-@onready var controles: Panel = $controles
+@onready var controles: TextureRect = $controles
 @onready var retornar_botao: Button = $pausa/pausaOpcoes/VBoxContainer/retornarBotao
 @onready var controles_botao: Button = $pausa/pausaOpcoes/VBoxContainer/controlesBotao
 @onready var sair_botao: Button = $pausa/pausaOpcoes/VBoxContainer/sairBotao
@@ -239,6 +239,7 @@ func _on_retornar_botao_pressed() -> void:
 
 func _on_controles_botao_pressed() -> void:
 	controles.visible = true
+	controles.z_index = 120
 	_uid_controle = true
 	controles_botao.release_focus()
 

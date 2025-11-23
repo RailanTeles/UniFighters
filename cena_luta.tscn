@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://drgx6103ieatj" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="12_etsvb"]
 [ext_resource type="StyleBox" uid="uid://dt85bhegj51dp" path="res://assets/themes/botaoSelecionado.tres" id="13_xa178"]
 [ext_resource type="StyleBox" uid="uid://o7cpkumk24hd" path="res://assets/themes/botaoNormal.tres" id="14_fve4s"]
+[ext_resource type="Texture2D" uid="uid://cgniulrxtcfdl" path="res://assets/luta/Controles/Controles.png" id="15_xa178"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga3s"]
 size = Vector2(1152, 57)
@@ -257,8 +258,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etsvb"]
 
 [node name="luta" type="Node2D"]
 script = ExtResource("1_0so0d")
@@ -505,11 +504,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kawji")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1ep3u")
 text = "Abandonar"
 
-[node name="controles" type="Panel" parent="."]
+[node name="controles" type="TextureRect" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_etsvb")
+offset_left = 28.0
+offset_top = 26.0
+offset_right = 1128.0
+offset_bottom = 626.0
+texture = ExtResource("15_xa178")
 
 [connection signal="timeout" from="TimerRound" to="." method="_on_timer_round_timeout"]
 [connection signal="pressed" from="pausa/pausaOpcoes/VBoxContainer/retornarBotao" to="." method="_on_retornar_botao_pressed"]
