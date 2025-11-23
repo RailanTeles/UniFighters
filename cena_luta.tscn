@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://crip3kp5bp0ow"]
+[gd_scene load_steps=49 format=3 uid="uid://crip3kp5bp0ow"]
 
 [ext_resource type="Script" uid="uid://cmbeyqs8qxvrq" path="res://cena_luta.gd" id="1_0so0d"]
 [ext_resource type="FontFile" uid="uid://bsmamfd8egop4" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="1_mrpgd"]
@@ -15,6 +15,8 @@
 [ext_resource type="StyleBox" uid="uid://dt85bhegj51dp" path="res://assets/themes/botaoSelecionado.tres" id="13_xa178"]
 [ext_resource type="StyleBox" uid="uid://o7cpkumk24hd" path="res://assets/themes/botaoNormal.tres" id="14_fve4s"]
 [ext_resource type="Texture2D" uid="uid://cgniulrxtcfdl" path="res://assets/luta/Controles/Controles.png" id="15_xa178"]
+[ext_resource type="Texture2D" uid="uid://cge6uqfryjxd0" path="res://assets/luta/Vitoria/VitoriaP1.png" id="16_5g1g7"]
+[ext_resource type="Texture2D" uid="uid://hj2sdg75phig" path="res://assets/luta/Vitoria/VitoriaP2.png" id="17_tmq5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga3s"]
 size = Vector2(1152, 57)
@@ -511,6 +513,22 @@ offset_top = 26.0
 offset_right = 1128.0
 offset_bottom = 626.0
 texture = ExtResource("15_xa178")
+
+[node name="VitoriaP1" type="TextureRect" parent="."]
+visible = false
+offset_left = 326.0
+offset_top = 150.0
+offset_right = 826.0
+offset_bottom = 500.0
+texture = ExtResource("16_5g1g7")
+
+[node name="VitoriaP2" type="TextureRect" parent="."]
+visible = false
+offset_left = 326.0
+offset_top = 150.0
+offset_right = 826.0
+offset_bottom = 500.0
+texture = ExtResource("17_tmq5x")
 
 [connection signal="timeout" from="TimerRound" to="." method="_on_timer_round_timeout"]
 [connection signal="pressed" from="pausa/pausaOpcoes/VBoxContainer/retornarBotao" to="." method="_on_retornar_botao_pressed"]

@@ -5,6 +5,10 @@ extends Node2D
 @onready var icone_p1: TextureRect = $HUD/P1/iconeP1
 @onready var icone_p2: TextureRect = $HUD/P2/iconeP2
 
+# ---- Vitórias -----
+@onready var vitoria_banner_p1: TextureRect = $VitoriaP1
+@onready var vitoria_banner_p2: TextureRect = $VitoriaP2
+
 # ---- Tempo -----
 @onready var tempo_texto: Label = $HUD/TempoContainer/TempoTexto
 @onready var timer_round: Timer = $TimerRound
@@ -141,7 +145,6 @@ func _on_p1_morreu():
 	vitorias_p2 += 1
 	_atualizar_ui_vitoria(2, vitorias_p2)
 	
-	await get_tree().create_timer(3.0).timeout
 	_checar_fim_da_partida()
 
 func _on_p2_morreu():
@@ -151,7 +154,6 @@ func _on_p2_morreu():
 	vitorias_p1 += 1
 	_atualizar_ui_vitoria(1, vitorias_p1)
 	
-	await get_tree().create_timer(3.0).timeout
 	_checar_fim_da_partida()
 
 func _atualizar_ui_vitoria(player_id: int, vitorias: int):
@@ -163,9 +165,30 @@ func _atualizar_ui_vitoria(player_id: int, vitorias: int):
 		elif vitorias == 2: v2p2.set("theme_override_styles/panel", estilo_vitoria)
 
 func _checar_fim_da_partida():
-	if vitorias_p1 == 2 or vitorias_p2 == 2:
+	if vitorias_p1 == 2:
+		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
+		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
+		_travar_personagens(true)
+		vitoria_banner_p1.visible = true
+		vitoria_banner_p1.z_index = 100
+		piscar_no_animacao(vitoria_banner_p1)
+		await piscar_no_animacao(vitoria_banner_p1)
+		await get_tree().create_timer(5.0).timeout
+		vitoria_banner_p1.visible = false
+		get_tree().change_scene_to_file("res://menu.tscn")
+	elif vitorias_p2 == 2:
+		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
+		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
+		_travar_personagens(true)
+		vitoria_banner_p2.visible = true
+		vitoria_banner_p2.z_index = 100
+		piscar_no_animacao(vitoria_banner_p2)
+		await piscar_no_animacao(vitoria_banner_p2)
+		await get_tree().create_timer(5.0).timeout
+		vitoria_banner_p2.visible = false
 		get_tree().change_scene_to_file("res://menu.tscn")
 	else:
+		await get_tree().create_timer(5.0).timeout
 		_resetar_round()
 
 func _resetar_round():
@@ -246,3 +269,16 @@ func _on_controles_botao_pressed() -> void:
 func _on_sair_botao_pressed() -> void:
 	get_viewport().set_input_as_handled()
 	get_tree().change_scene_to_file("res://selecao.tscn")
+
+func piscar_no_animacao(no) -> Signal:
+	var tween = create_tween()
+	tween.tween_property(no, "modulate:a", 0.0, 0.1)
+	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	tween.tween_property(no, "modulate:a", 0.0, 0.1)
+	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	tween.tween_property(no, "modulate:a", 0.0, 0.1)
+	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	tween.tween_property(no, "modulate:a", 0.0, 0.1)
+	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	
+	return tween.finished

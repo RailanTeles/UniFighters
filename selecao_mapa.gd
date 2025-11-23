@@ -109,7 +109,7 @@ func atualizar_posicao_cursores():
 		p2_cursor.size = p2_foco_atual.size
 		p2_cursor.global_position = p2_foco_atual.global_position
 
-func piscar_no_animacao(no) -> Signal: # <-- Mude aqui
+func piscar_no_animacao(no) -> Signal:
 	var tween = create_tween()
 	tween.tween_property(no, "modulate:a", 0.0, 0.1)
 	tween.tween_property(no, "modulate:a", 1.0, 0.1)
