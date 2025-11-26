@@ -24,11 +24,16 @@ var oponente: Node2D
 # Estatísticas
 var vida_max = 1000.0
 var vida_atual = 1000.0 
-var aura_max = 500.0
+var aura_max = 100.0
 var aura_atual = 0.0
+var barra_aura = 0
+
+var taxa_recarga_aura = 10.0
+var bonus_aceleracao_aura = 15.0
+var tempo_carregando = 0.0
 
 signal vida_mudou(vida_atual_nova, vida_max_nova)
-signal aura_mudou(aura_atual_nova, aura_max_nova)
+signal aura_mudou(aura_atual_nova, aura_max_nova, barras_totais)
 signal morreu
 
 # Estados de Controle
@@ -38,11 +43,14 @@ var dano_do_golpe = 0
 var golpe_e_forte = false 
 var esta_morto = false
 var esta_em_hitstun = false
+var esta_carregando_aura = false
 
 func _ready():
 	emit_signal("vida_mudou", vida_atual, vida_max)
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 
 func _physics_process(delta):
+	# 1. Morte
 	if esta_morto:
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -50,17 +58,24 @@ func _physics_process(delta):
 		move_and_slide()
 		return 
 	
+	# 2. Gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	# Pulo
+	
+	# 3. Carregando Aura
+	if esta_carregando_aura:
+		velocity.x = 0
+		move_and_slide()
+		return
+		
+	# 4. Pulo
 	var input_pular = "p" + str(player_id) + "_pular"
 	if Input.is_action_just_pressed(input_pular) and is_on_floor() and pode_agir:
 		velocity.y = JUMP_VELOCITY
 		contador_combo = 0
 		timer_combo.stop()
 
-	# Movimento Horizontal
+	# 5. Movimento Horizontal
 	var input_agachar = "p" + str(player_id) + "_baixo"
 	var is_crouching = Input.is_action_pressed(input_agachar) and is_on_floor()
 	var input_esquerda = "p" + str(player_id) + "_esquerda"
@@ -77,7 +92,7 @@ func _physics_process(delta):
 	else: 
 		velocity.x = direcao_input * (velocidade * 0.7)
 	
-	# Lógica Anti-Stack (Evita ficar na cabeça do oponente)
+	# 6. Lógica Anti-Stack
 	for i in get_slide_collision_count():
 		var colisao = get_slide_collision(i)
 		var corpo = colisao.get_collider()
@@ -92,7 +107,7 @@ func _physics_process(delta):
 func _process(delta):
 	if oponente == null: return 
 
-	# Virar Sprite
+	# --- Lógica de Virar ---
 	if not esta_morto:
 		if oponente.global_position.x > global_position.x:
 			direcao_olhando = 1
@@ -101,7 +116,7 @@ func _process(delta):
 			direcao_olhando = -1
 			sprite.flip_h = true
 
-	# Morte
+	# --- Travas de Estado ---
 	if esta_morto:
 		animation_player.play("receber_dano")
 		return
@@ -113,6 +128,19 @@ func _process(delta):
 	var is_crouching = Input.is_action_pressed(input_agachar)
 	var input_socar = "p" + str(player_id) + "_socoFraco"
 	var apertou_soco = Input.is_action_just_pressed(input_socar)
+	var input_farmar = "p" + str(player_id) + "_aura"
+	var segurando_aura = Input.is_action_pressed(input_farmar)
+	
+	if segurando_aura and is_on_floor() and barra_aura < 5:
+		esta_carregando_aura = true
+		sprite.play("receber_dano")
+		tempo_carregando += delta
+		var ganho_atual = taxa_recarga_aura + (tempo_carregando * bonus_aceleracao_aura)
+		ganhar_aura(ganho_atual * delta)
+		return
+	else:
+		tempo_carregando = 0.0
+		esta_carregando_aura = false
 	
 	# Lógica de Ataque e Combo
 	if apertou_soco:
@@ -191,9 +219,15 @@ func levar_dano(quantidade: int, e_forte: bool, direcao_knockback: int):
 		velocity.x = KNOCKBACK_FRACO * direcao_knockback
 
 func ganhar_aura(quantidade):
+	if barra_aura >= 5:
+		return
 	aura_atual += quantidade
 	aura_atual = min(aura_atual, aura_max)
-	emit_signal("aura_mudou", aura_atual, aura_max)
+	if aura_atual >= aura_max:
+		barra_aura += 1
+		if barra_aura < 5:
+			aura_atual = 0.0
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 
 # --- Sinais e Callbacks ---
 
@@ -241,6 +275,7 @@ func _desativar_hitbox():
 func resetar_estado():
 	vida_atual = vida_max
 	aura_atual = 0.0
+	barra_aura = 0
 	esta_morto = false
 	pode_agir = true
 	esta_em_hitstun = false
@@ -248,6 +283,6 @@ func resetar_estado():
 	velocity = Vector2.ZERO
 	
 	emit_signal("vida_mudou", vida_atual, vida_max)
-	emit_signal("aura_mudou", aura_atual, aura_max)
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	
 	sprite.play("idle")

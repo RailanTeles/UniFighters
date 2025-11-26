@@ -5,6 +5,10 @@ extends Node2D
 @onready var icone_p1: TextureRect = $HUD/P1/iconeP1
 @onready var icone_p2: TextureRect = $HUD/P2/iconeP2
 
+# ---- Valor da Aura -----
+@onready var num_aura_p1: Label = $HUD/P1/infosP1/AuraP1/NumAuraP1
+@onready var num_aura_p2: Label = $HUD/P2/infosP2/AuraP2/NumAuraP2
+
 # ---- Vitórias -----
 @onready var vitoria_banner_p1: TextureRect = $VitoriaP1
 @onready var vitoria_banner_p2: TextureRect = $VitoriaP2
@@ -94,8 +98,8 @@ func _ready():
 	
 	_on_p1_vida_mudou(p1.vida_atual, p1.vida_max)
 	_on_p2_vida_mudou(p2.vida_atual, p2.vida_max)
-	_on_p1_aura_mudou(p1.aura_atual, p1.aura_max)
-	_on_p2_aura_mudou(p2.aura_atual, p2.aura_max)
+	_on_p1_aura_mudou(p1.aura_atual, p1.aura_max, p1.barra_aura)
+	_on_p2_aura_mudou(p2.aura_atual, p2.aura_max, p2.barra_aura)
 	
 	_resetar_round()
 
@@ -130,12 +134,17 @@ func _travar_personagens(travar: bool):
 # --- Funções de Sinal (UI) ---
 func _on_p1_vida_mudou(vida_atual_nova, vida_max_nova):
 	barra_vida_p1.value = (float(vida_atual_nova) / float(vida_max_nova)) * 100
-func _on_p1_aura_mudou(aura_atual_nova, aura_max_nova):
-	barra_aura_p1.value = (float(aura_atual_nova) / float(aura_max_nova)) * 100
+func _on_p1_aura_mudou(aura_atual_nova, aura_max_nova, barras_totais):
+	var porcentagem = float(aura_atual_nova) / float(aura_max_nova)
+	barra_aura_p1.value = porcentagem * 100
+	num_aura_p1.text = str(barras_totais)
+
 func _on_p2_vida_mudou(vida_atual_nova, vida_max_nova):
 	barra_vida_p2.value = (float(vida_atual_nova) / float(vida_max_nova)) * 100
-func _on_p2_aura_mudou(aura_atual_nova, aura_max_nova):
-	barra_aura_p2.value = (float(aura_atual_nova) / float(aura_max_nova)) * 100
+func _on_p2_aura_mudou(aura_atual_nova, aura_max_nova, barras_totais):
+	var porcentagem = float(aura_atual_nova) / float(aura_max_nova)
+	barra_aura_p2.value = porcentagem * 100
+	num_aura_p2.text = str(barras_totais)
 
 # --- Lógica de Round ---
 func _on_p1_morreu():
