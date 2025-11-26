@@ -12,7 +12,7 @@ extends CharacterBody2D
 # Variáveis de Movimento, Pulo, Jogador, Oponente
 var velocidade = 250.0
 var direcao_olhando = 1
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -700.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # --- Novas Constantes de Knockback ---
@@ -79,6 +79,27 @@ func _physics_process(delta):
 		velocity.x = direcao_input * velocidade
 	else: 
 		velocity.x = direcao_input * (velocidade * 0.7)
+		
+	# --- LÓGICA ANTI-STACK (Não ficar na cabeça) ---
+	for i in get_slide_collision_count():
+		var colisao = get_slide_collision(i)
+		var corpo_colidido = colisao.get_collider()
+		
+		# Se colidimos com um CharacterBody2D (o outro jogador)
+		if corpo_colidido is CharacterBody2D:
+			# Verifica se estamos ACIMA dele (nosso Y é menor)
+			# (A margem de 10px garante que não atrapalhe empurrões laterais normais)
+			if global_position.y < corpo_colidido.global_position.y - 10:
+				
+				# Descobre para que lado escorregar (esquerda ou direita)
+				var direcao_escorregar = sign(global_position.x - corpo_colidido.global_position.x)
+				
+				# Se cair EXATAMENTE no meio (0), joga para a direita
+				if direcao_escorregar == 0: 
+					direcao_escorregar = 1
+				
+				# Força uma velocidade horizontal para escorregar
+				velocity.x = direcao_escorregar * 800 # Ajuste a força se precisar
 	
 	move_and_slide()
 
