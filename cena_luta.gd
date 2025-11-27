@@ -177,6 +177,12 @@ func _checar_fim_da_partida():
 	if vitorias_p1 == 2:
 		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
 		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
+		p1.animation_player.stop() 
+		p2.animation_player.stop() 
+		p1.sprite.play("vitoria")
+		p2.sprite.play("derrota")
+		print(p1.sprite.animation)
+		print(p2.sprite.animation)
 		_travar_personagens(true)
 		vitoria_banner_p1.visible = true
 		vitoria_banner_p1.z_index = 100
@@ -184,10 +190,14 @@ func _checar_fim_da_partida():
 		await piscar_no_animacao(vitoria_banner_p1)
 		await get_tree().create_timer(5.0).timeout
 		vitoria_banner_p1.visible = false
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file("res://selecao.tscn")
 	elif vitorias_p2 == 2:
 		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
 		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
+		p1.animation_player.stop() 
+		p2.animation_player.stop() 
+		p2.sprite.play("vitoria")
+		p1.sprite.play("derrota")
 		_travar_personagens(true)
 		vitoria_banner_p2.visible = true
 		vitoria_banner_p2.z_index = 100
@@ -195,7 +205,7 @@ func _checar_fim_da_partida():
 		await piscar_no_animacao(vitoria_banner_p2)
 		await get_tree().create_timer(5.0).timeout
 		vitoria_banner_p2.visible = false
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file("res://selecao.tscn")
 	else:
 		await get_tree().create_timer(5.0).timeout
 		_resetar_round()
@@ -281,12 +291,7 @@ func _on_sair_botao_pressed() -> void:
 
 func piscar_no_animacao(no) -> Signal:
 	var tween = create_tween()
-	tween.tween_property(no, "modulate:a", 0.0, 0.1)
-	tween.tween_property(no, "modulate:a", 1.0, 0.1)
-	tween.tween_property(no, "modulate:a", 0.0, 0.1)
-	tween.tween_property(no, "modulate:a", 1.0, 0.1)
-	tween.tween_property(no, "modulate:a", 0.0, 0.1)
-	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	tween.set_loops(10)
 	tween.tween_property(no, "modulate:a", 0.0, 0.1)
 	tween.tween_property(no, "modulate:a", 1.0, 0.1)
 	

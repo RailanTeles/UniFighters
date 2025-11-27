@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dt3pv0bfcm6cx"]
+[gd_scene load_steps=97 format=3 uid="uid://dt3pv0bfcm6cx"]
 
 [ext_resource type="Script" uid="uid://coj0s3lgfa5hr" path="res://regulata.gd" id="1_defoa"]
 [ext_resource type="Texture2D" uid="uid://buhg3q84c67ry" path="res://assets/personagens/regulata/sprites/jamylle_idle.png" id="1_e8wdl"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://1l7mvtf3hew" path="res://assets/personagens/regulata/sprites/farmando_aura_jamylle.png" id="5_2ep2x"]
 [ext_resource type="Texture2D" uid="uid://dgtl364l5q0oq" path="res://assets/personagens/regulata/sprites/jamylle_pular.png" id="5_3s1g2"]
 [ext_resource type="Texture2D" uid="uid://bb8m8hdppk4gs" path="res://assets/personagens/regulata/sprites/derrubada.png" id="5_43llg"]
+[ext_resource type="Texture2D" uid="uid://ch56bl1j6rml7" path="res://assets/personagens/regulata/sprites/derrota.png" id="5_kboh1"]
 [ext_resource type="Texture2D" uid="uid://b841l3000ce2u" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra1.png" id="5_sf52j"]
+[ext_resource type="Texture2D" uid="uid://baunc2t1ws2fd" path="res://assets/personagens/regulata/sprites/entrada.png" id="6_0y8oa"]
 [ext_resource type="Texture2D" uid="uid://cv5wcqnw5csxj" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra2.png" id="6_kkpxh"]
 [ext_resource type="Texture2D" uid="uid://f3jljc2dlc4g" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra3.png" id="7_2ep2x"]
 [ext_resource type="Texture2D" uid="uid://dmxcf8pv2bpck" path="res://assets/personagens/regulata/sprites/jamylle_golpeFraAg.png" id="8_c7xcj"]
@@ -17,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cn3ab3o1k8wv1" path="res://assets/personagens/regulata/sprites/jamylle_golpeFraAr.png" id="9_43llg"]
 [ext_resource type="Texture2D" uid="uid://b28oa4g7pb3j7" path="res://assets/personagens/regulata/sprites/iniciando_aura_jamylle.png" id="12_c7xcj"]
 [ext_resource type="Texture2D" uid="uid://wru5cg6pelee" path="res://assets/personagens/regulata/sprites/levantar.png" id="14_0y8oa"]
+[ext_resource type="Texture2D" uid="uid://duvipyfxt55w6" path="res://assets/personagens/regulata/sprites/vitoria.png" id="16_prbsw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4uyt"]
 radius = 32.0
@@ -50,6 +53,30 @@ region = Rect2(192, 0, 192, 192)
 atlas = ExtResource("3_1qjka")
 region = Rect2(384, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxiey"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhf77"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_384km"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6e1s"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypsnf"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ec7d"]
+atlas = ExtResource("5_kboh1")
+region = Rect2(960, 0, 192, 192)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wl5sc"]
 atlas = ExtResource("5_43llg")
 region = Rect2(0, 0, 192, 192)
@@ -61,6 +88,22 @@ region = Rect2(192, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ed07s"]
 atlas = ExtResource("5_43llg")
 region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksqvl"]
+atlas = ExtResource("6_0y8oa")
+region = Rect2(0, 0, 258, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfefp"]
+atlas = ExtResource("6_0y8oa")
+region = Rect2(258, 0, 258, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_808bb"]
+atlas = ExtResource("6_0y8oa")
+region = Rect2(516, 0, 258, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrlgw"]
+atlas = ExtResource("6_0y8oa")
+region = Rect2(774, 0, 258, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryhtx"]
 atlas = ExtResource("5_2ep2x")
@@ -210,6 +253,26 @@ region = Rect2(0, 0, 192, 192)
 atlas = ExtResource("8_t4cif")
 region = Rect2(192, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkfmj"]
+atlas = ExtResource("16_prbsw")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsjy1"]
+atlas = ExtResource("16_prbsw")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucw8l"]
+atlas = ExtResource("16_prbsw")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mift3"]
+atlas = ExtResource("16_prbsw")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gskos"]
+atlas = ExtResource("16_prbsw")
+region = Rect2(800, 0, 200, 200)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1qjka"]
 animations = [{
 "frames": [{
@@ -250,6 +313,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nxiey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhf77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_384km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6e1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypsnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ec7d")
+}],
+"loop": false,
+"name": &"derrota",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wl5sc")
 }, {
 "duration": 1.0,
@@ -261,6 +347,23 @@ animations = [{
 "loop": false,
 "name": &"derrubado",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksqvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfefp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_808bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrlgw")
+}],
+"loop": false,
+"name": &"entrada",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -431,6 +534,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"receber_dano",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkfmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsjy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucw8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mift3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gskos")
+}],
+"loop": true,
+"name": &"vitoria",
 "speed": 10.0
 }]
 
@@ -807,7 +930,6 @@ shape = SubResource("CapsuleShape2D_r4uyt")
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_1qjka")
 animation = &"receber_dano"
-autoplay = "idle"
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
