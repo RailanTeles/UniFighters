@@ -21,8 +21,8 @@ var player_id = 1
 var oponente: Node2D 
 
 # Estatísticas
-var vida_max = 10.0
-var vida_atual = 10.0 
+var vida_max = 1000.0
+var vida_atual = 1000.0 
 var aura_max = 100.0
 var aura_atual = 0.0
 var barra_aura = 0
