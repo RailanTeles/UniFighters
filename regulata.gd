@@ -37,12 +37,12 @@ signal aura_mudou(aura_atual_nova, aura_max_nova, barras_totais)
 signal morreu
 
 # Estados de Controle
-var pode_agir = true
+var pode_agir = true # False quando o personagem leva dano e quando está atacando
 var contador_combo = 0
 var dano_do_golpe = 0
 var golpe_e_forte = false 
 var esta_morto = false
-var esta_em_hitstun = false
+var esta_em_hitstun = false # True quando toma o dano do golpe
 var esta_carregando_aura = false
 
 func _ready():
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	# 3. Carregando Aura
-	if esta_carregando_aura:
+	if esta_carregando_aura and pode_agir:
 		velocity.x = 0
 		move_and_slide()
 		return
@@ -133,7 +133,10 @@ func _process(delta):
 	
 	if segurando_aura and is_on_floor() and barra_aura < 5:
 		esta_carregando_aura = true
-		sprite.play("receber_dano")
+		if sprite.animation != "iniciando_aura" and sprite.animation != "farmando_aura":
+			sprite.play("iniciando_aura")
+		else:
+			sprite.play("farmando_aura")
 		tempo_carregando += delta
 		var ganho_atual = taxa_recarga_aura + (tempo_carregando * bonus_aceleracao_aura)
 		ganhar_aura(ganho_atual * delta)
@@ -193,6 +196,9 @@ func set_oponente(alvo: Node2D):
 
 func levar_dano(quantidade: int, e_forte: bool, direcao_knockback: int):
 	if esta_morto or esta_em_hitstun: return
+	
+	esta_carregando_aura = false
+	tempo_carregando = 0.0
 
 	pode_agir = false
 	esta_em_hitstun = true 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=62 format=3 uid="uid://dt3pv0bfcm6cx"]
+[gd_scene load_steps=69 format=3 uid="uid://dt3pv0bfcm6cx"]
 
 [ext_resource type="Script" uid="uid://coj0s3lgfa5hr" path="res://regulata.gd" id="1_defoa"]
 [ext_resource type="Texture2D" uid="uid://buhg3q84c67ry" path="res://assets/personagens/regulata/sprites/jamylle_idle.png" id="1_e8wdl"]
 [ext_resource type="Texture2D" uid="uid://c04waafklscmf" path="res://assets/personagens/regulata/sprites/jamylle_andar_frente.png" id="2_3s1g2"]
 [ext_resource type="Texture2D" uid="uid://cp1oxtpumf3du" path="res://assets/personagens/regulata/sprites/jamylle_agachar.png" id="2_t4cif"]
 [ext_resource type="Texture2D" uid="uid://cmgpe6w68xpum" path="res://assets/personagens/regulata/sprites/jamylle_andar_atras.png" id="3_1qjka"]
+[ext_resource type="Texture2D" uid="uid://1l7mvtf3hew" path="res://assets/personagens/regulata/sprites/farmando_aura_jamylle.png" id="5_2ep2x"]
 [ext_resource type="Texture2D" uid="uid://dgtl364l5q0oq" path="res://assets/personagens/regulata/sprites/jamylle_pular.png" id="5_3s1g2"]
 [ext_resource type="Texture2D" uid="uid://b841l3000ce2u" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra1.png" id="5_sf52j"]
 [ext_resource type="Texture2D" uid="uid://cv5wcqnw5csxj" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra2.png" id="6_kkpxh"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dhmw1xucitjc2" path="res://assets/personagens/regulata/sprites/jamylle_queda.png" id="8_m0f3r"]
 [ext_resource type="Texture2D" uid="uid://r4w0hmiixu3w" path="res://assets/personagens/regulata/sprites/jamylle_dano.png" id="8_t4cif"]
 [ext_resource type="Texture2D" uid="uid://cn3ab3o1k8wv1" path="res://assets/personagens/regulata/sprites/jamylle_golpeFraAr.png" id="9_43llg"]
+[ext_resource type="Texture2D" uid="uid://b28oa4g7pb3j7" path="res://assets/personagens/regulata/sprites/iniciando_aura_jamylle.png" id="12_c7xcj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4uyt"]
 radius = 32.0
@@ -45,6 +47,14 @@ region = Rect2(192, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl61j"]
 atlas = ExtResource("3_1qjka")
 region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryhtx"]
+atlas = ExtResource("5_2ep2x")
+region = Rect2(0, 0, 292, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s43xu"]
+atlas = ExtResource("5_2ep2x")
+region = Rect2(292, 0, 292, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vma20"]
 atlas = ExtResource("5_sf52j")
@@ -130,6 +140,18 @@ region = Rect2(192, 0, 192, 192)
 atlas = ExtResource("1_e8wdl")
 region = Rect2(384, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c0tm"]
+atlas = ExtResource("12_c7xcj")
+region = Rect2(292, 0, 292, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ebxx"]
+atlas = ExtResource("12_c7xcj")
+region = Rect2(584, 0, 292, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kunbi"]
+atlas = ExtResource("12_c7xcj")
+region = Rect2(876, 0, 292, 192)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qjka"]
 atlas = ExtResource("5_3s1g2")
 region = Rect2(0, 0, 192, 192)
@@ -199,6 +221,17 @@ animations = [{
 "loop": false,
 "name": &"andar_tras",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryhtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s43xu")
+}],
+"loop": false,
+"name": &"farmando_aura",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -292,6 +325,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c0tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ebxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kunbi")
+}],
+"loop": false,
+"name": &"iniciando_aura",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
