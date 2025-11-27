@@ -397,6 +397,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+fill_mode = 1
 texture_under = ExtResource("4_om7nk")
 texture_over = ExtResource("4_om7nk")
 texture_progress = ExtResource("5_tc13t")

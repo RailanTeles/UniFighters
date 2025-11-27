@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://cx3u3fhwrv87g"]
+
+[ext_resource type="Texture2D" uid="uid://cwo45mwjqhcg7" path="res://assets/mapas/cenariopatio.png" id="1_gmh66"]
+[ext_resource type="Script" uid="uid://djm5vybckc68o" path="res://cenario_frente.gd" id="2_ew34n"]
+[ext_resource type="AudioStream" uid="uid://cqjgcpmib62rg" path="res://assets/musics/musica-frente.mp3" id="3_q3s4k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re35j"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl5ou"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dwe5"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6lw2"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(3456, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjf1e"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(4608, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa6gy"]
+atlas = ExtResource("1_gmh66")
+region = Rect2(5760, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65js0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re35j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl5ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dwe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6lw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjf1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa6gy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cenario_patio" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_65js0")
+autoplay = "default"
+centered = false
+script = ExtResource("2_ew34n")
+
+[node name="cenario_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q3s4k")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
