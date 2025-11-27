@@ -14,9 +14,8 @@ var direcao_olhando = 1
 const JUMP_VELOCITY = -700.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-const KNOCKBACK_FRACO = 80.0
-const KNOCKBACK_FORTE_X = 1200.0
-const KNOCKBACK_FORTE_Y = -200.0 
+var KNOCKBACK = 0.0
+var KNOCKBACK_FORTE_Y = -200.0 
 
 var player_id = 1 
 var oponente: Node2D 
@@ -37,7 +36,7 @@ signal aura_mudou(aura_atual_nova, aura_max_nova, barras_totais)
 signal morreu
 
 # Estados de Controle
-var pode_agir = true # False quando o personagem leva dano e quando está atacando
+var pode_agir = true # Impede que o personagem faça duas coisas ao msm tempo (chutar e andar)
 var contador_combo = 0
 var dano_do_golpe = 0
 var golpe_e_forte = false 
@@ -194,7 +193,7 @@ func _process(delta):
 func set_oponente(alvo: Node2D):
 	oponente = alvo
 
-func levar_dano(quantidade: int, e_forte: bool, direcao_knockback: int):
+func levar_dano(quantidade: int, e_forte: bool, knockback_oponente: float, direcao_knockback: int):
 	if esta_morto or esta_em_hitstun: return
 	
 	esta_carregando_aura = false
@@ -217,12 +216,15 @@ func levar_dano(quantidade: int, e_forte: bool, direcao_knockback: int):
 		return 
 
 	if e_forte:
-		animation_player.play("receber_dano") 
-		velocity.x = KNOCKBACK_FORTE_X * direcao_knockback
+		animation_player.play("derrubado")
+		velocity.x = knockback_oponente * direcao_knockback
 		velocity.y = KNOCKBACK_FORTE_Y
+		await animation_player.animation_finished
+		await piscar_no_animacao(sprite)
+		animation_player.play("levantar")
 	else:
 		animation_player.play("receber_dano")
-		velocity.x = KNOCKBACK_FRACO * direcao_knockback
+		velocity.x = knockback_oponente * direcao_knockback
 
 func ganhar_aura(quantidade):
 	if barra_aura >= 5:
@@ -236,16 +238,18 @@ func ganhar_aura(quantidade):
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 
 # --- Sinais e Callbacks ---
-
 func _on_timer_combo_timeout() -> void:
 	contador_combo = 0
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if esta_morto: return
-
+	
+	if anim_name == "derrubado":
+		return
 	pode_agir = true
 	
-	if anim_name == "receber_dano":
+	var desativa_hitstun = ["receber_dano", "levantar"]
+	if anim_name in desativa_hitstun:
 		esta_em_hitstun = false
 	
 	var ataques_combo = ["golpe_fraco1", "golpe_fraco2"]
@@ -262,11 +266,12 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	var oponente_script = area.get_owner()
 	var direcao_knockback = sign(global_position.x - oponente_script.global_position.x)
 	
-	levar_dano(oponente_script.dano_do_golpe, oponente_script.golpe_e_forte, direcao_knockback)
+	levar_dano(oponente_script.dano_do_golpe, oponente_script.golpe_e_forte, oponente_script.KNOCKBACK ,direcao_knockback)
 
-func _ativar_hitbox(dano: int, pos_x: float, pos_y: float, tam_x: float, tam_y: float, forte: bool = false):
+func _ativar_hitbox(dano: int, pos_x: float, pos_y: float, tam_x: float, tam_y: float, forte: bool = false, knockback: float = 0.0):
 	dano_do_golpe = dano
-	golpe_e_forte = forte 
+	golpe_e_forte = forte
+	KNOCKBACK = knockback
 	hitbox_shape.position = Vector2(pos_x * direcao_olhando, pos_y)
 	(hitbox_shape.shape as RectangleShape2D).size = Vector2(tam_x, tam_y)
 	hitbox.monitorable = true 
@@ -292,3 +297,11 @@ func resetar_estado():
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	
 	sprite.play("idle")
+
+func piscar_no_animacao(no) -> Signal:
+	var tween = create_tween()
+	tween.set_loops(6)
+	tween.tween_property(no, "modulate:a", 0.0, 0.1)
+	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	
+	return tween.finished
