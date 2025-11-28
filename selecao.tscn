@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://df5iqq7gemu5t"]
+[gd_scene load_steps=28 format=3 uid="uid://df5iqq7gemu5t"]
 
 [ext_resource type="Texture2D" uid="uid://dl16ldgrtvlph" path="res://assets/bg-selecao.png" id="1_1hcjh"]
 [ext_resource type="Script" uid="uid://csjapbbhnym4t" path="res://selecao.gd" id="1_7c4td"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
 [ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
 [ext_resource type="Texture2D" uid="uid://bnje0mhng61cx" path="res://assets/personagens/archiveGG/ArchiveGGIconeTrancado.png" id="14_n4pp6"]
+[ext_resource type="AudioStream" uid="uid://b8gql7bvdp1hv" path="res://assets/selecaoPersonagem/musicasSelecao/REGULATA.mp3" id="17_ggar8"]
+[ext_resource type="AudioStream" uid="uid://yjhg4kynyjmc" path="res://assets/selecaoPersonagem/musicasSelecao/CABOMANTE.mp3" id="18_501mu"]
+[ext_resource type="AudioStream" uid="uid://ctdq4x8l76cq8" path="res://assets/selecaoPersonagem/musicasSelecao/IMPERATECH.mp3" id="19_g6xox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
 atlas = ExtResource("1_1hcjh")
@@ -236,6 +239,23 @@ layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 texture = ExtResource("13_501mu")
+
+[node name="musicas" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="regulataSelecao" type="AudioStreamPlayer" parent="musicas"]
+stream = ExtResource("17_ggar8")
+volume_db = -10.0
+
+[node name="cabomanteSelecao" type="AudioStreamPlayer" parent="musicas"]
+stream = ExtResource("18_501mu")
+volume_db = -10.0
+
+[node name="imperatechSelecao" type="AudioStreamPlayer" parent="musicas"]
+stream = ExtResource("19_g6xox")
+volume_db = -10.0
 
 [connection signal="pressed" from="botoes/comecarButton" to="." method="_on_comecar_button_pressed"]
 [connection signal="timeout" from="botoes/comecarButton/erroTimer" to="." method="_on_erro_timer_timeout"]

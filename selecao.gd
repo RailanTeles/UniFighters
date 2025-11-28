@@ -25,6 +25,10 @@ var p2_foco_atual: Control
 @onready var erro_timer: Timer = $botoes/comecarButton/erroTimer
 @onready var animacao: AnimatedSprite2D = $botoes/comecarButton/animacao
 
+# Vozes
+@onready var regulata_selecao: AudioStreamPlayer = $musicas/regulataSelecao
+@onready var cabomante_selecao: AudioStreamPlayer = $musicas/cabomanteSelecao
+@onready var imperatech_selecao: AudioStreamPlayer = $musicas/imperatechSelecao
 
 # Cursores
 @onready var p1_cursor: TextureRect = $P1_cursor
@@ -125,6 +129,7 @@ func _process(delta):
 				erro_som.play();
 			else:
 				p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
+				voz_personagem(p1_personagem_selecionado)
 				atualizar_banner_p1(p1_personagem_selecionado)
 	
 	# Controles P2 ------------------------
@@ -153,6 +158,7 @@ func _process(delta):
 				erro_som.play();
 			else:
 				p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]
+				voz_personagem(p2_personagem_selecionado)
 				atualizar_banner_p2(p2_personagem_selecionado)
 
 	# ----- ATUALIZAÇÃO VISUAL -----
@@ -200,3 +206,11 @@ func atualizar_banner_p2(nome_personagem):
 func _on_erro_timer_timeout() -> void:
 	texto.text = texto_normal
 	texto.self_modulate = Color(1,1,1)
+
+func voz_personagem(nome_personagem):
+	if nome_personagem == "Regulata":
+		regulata_selecao.play()
+	elif nome_personagem == "Cabomante":
+		cabomante_selecao.play()
+	elif nome_personagem == "Imperatech":
+		imperatech_selecao.play()
