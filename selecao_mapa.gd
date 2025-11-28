@@ -146,15 +146,16 @@ func seSelecinou():
 			menu_musica.stop()
 			cursor_aleatorio.global_position = p1_cursor.global_position
 			cursor_aleatorio.visible = true
-			var numero =  randi_range(1,10)
+			var numero =  randi_range(1,8)
 			for i in numero:
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(0.2).timeout
 				aleatorio_som.play()
 				await aleatorio_som.finished
 				if cursor_aleatorio.global_position == p1_cursor.global_position:
 					cursor_aleatorio.global_position = p2_cursor.global_position
 				else:
 					cursor_aleatorio.global_position = p1_cursor.global_position
+			await get_tree().create_timer(0.2).timeout
 			aleatorio_som.play()
 			
 			if cursor_aleatorio.global_position == p1_cursor.global_position:
