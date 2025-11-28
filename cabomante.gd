@@ -120,7 +120,7 @@ func _process(delta):
 
 	# --- Travas de Estado ---
 	if esta_morto:
-		animation_player.play("receber_dano")
+		animation_player.play("derrota")
 
 	# Inputs
 	var input_agachar = "p" + str(player_id) + "_baixo"
@@ -275,10 +275,7 @@ func _on_timer_combo_timeout() -> void:
 	contador_combo = 0
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	if anim_name == "especial_2":
-		sprite.offset = Vector2(120 * direcao_olhando, 0)
-		await animation_player.animation_finished
-		sprite.offset = Vector2(0, 0)
+	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if esta_morto: return

@@ -117,7 +117,7 @@ func _process(delta):
 
 	# --- Travas de Estado ---
 	if esta_morto:
-		animation_player.play("receber_dano")
+		animation_player.play("derrota")
 
 	# Inputs
 	var input_agachar = "p" + str(player_id) + "_baixo"
