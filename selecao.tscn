@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://csf4u77chists" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
 [ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
 [ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
-[ext_resource type="Texture2D" uid="uid://0tpimasnly46" path="res://assets/personagens/archiveGG/ArchiveGGIcone.png" id="14_n4pp6"]
+[ext_resource type="Texture2D" uid="uid://bnje0mhng61cx" path="res://assets/personagens/archiveGG/ArchiveGGIconeTrancado.png" id="14_n4pp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mitmw"]
 atlas = ExtResource("1_1hcjh")

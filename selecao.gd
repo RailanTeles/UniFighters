@@ -66,9 +66,9 @@ var dados_banners_p2 = {
 
 var CAMINHOS_PERSONAGENS = { 
 	"Regulata": "res://regulata.tscn",
-	"Cabomante": "res://personagens/cabomante/cabomante.tscn",
-	"Imperatech": "res://personagens/imperatech/imperatech.tscn",
-	"ArchiveGG": "res://personagens/sprintora/sprintora.tscn"
+	"Cabomante": "res://cabomante.tscn",
+	"Imperatech": "res://imperatech.tscn",
+	"ArchiveGG": ""
 }
 
 var dados_caracteristicas = {}
@@ -121,8 +121,11 @@ func _process(delta):
 		if p1_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
 		else:
-			p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
-			atualizar_banner_p1(p1_personagem_selecionado)
+			if p1_foco_atual == char_4:
+				erro_som.play();
+			else:
+				p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
+				atualizar_banner_p1(p1_personagem_selecionado)
 	
 	# Controles P2 ------------------------
 	if Input.is_action_just_pressed("p2_direita"):
@@ -146,8 +149,11 @@ func _process(delta):
 		if p2_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
 		else:
-			p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]
-			atualizar_banner_p2(p2_personagem_selecionado)
+			if p2_foco_atual == char_4:
+				erro_som.play();
+			else:
+				p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]
+				atualizar_banner_p2(p2_personagem_selecionado)
 
 	# ----- ATUALIZAÇÃO VISUAL -----
 	if foco_mudou:
