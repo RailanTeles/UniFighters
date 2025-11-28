@@ -131,10 +131,10 @@ func _process(delta):
 	
 	if segurando_aura and is_on_floor() and barra_aura < 5:
 		esta_carregando_aura = true
-		if sprite.animation != "iniciando_aura" and sprite.animation != "farmando_aura":
-			sprite.play("iniciando_aura")
+		if animation_player.current_animation != "iniciando_aura" and animation_player.current_animation != "farmando_aura":
+			animation_player.play("iniciando_aura")
 		else:
-			sprite.play("farmando_aura")
+			animation_player.play("farmando_aura")
 		tempo_carregando += delta
 		var ganho_atual = taxa_recarga_aura + (tempo_carregando * bonus_aceleracao_aura)
 		ganhar_aura(ganho_atual * delta)
@@ -170,24 +170,24 @@ func _process(delta):
 	# Animações de Movimento
 	elif is_on_floor():
 		if is_crouching:
-			sprite.play("agachar")
+			animation_player.play("agachar")
 			contador_combo = 0 
 			timer_combo.stop()
 		else:
 			var direcao_input = Input.get_axis("p" + str(player_id) + "_esquerda", "p" + str(player_id) + "_direita")
 			if direcao_input == 0:
-				sprite.play("idle")
+				animation_player.play("idle")
 			else:
 				if direcao_input == direcao_olhando:
-					sprite.play("andar_frente")
+					animation_player.play("andar_frente")
 				else: 
-					sprite.play("andar_tras")
+					animation_player.play("andar_tras")
 				contador_combo = 0 
 				timer_combo.stop()
 	
 	elif not is_on_floor():
-		if velocity.y < 0: sprite.play("pular")
-		else: sprite.play("queda")
+		if velocity.y < 0: animation_player.play("pular")
+		else: animation_player.play("queda")
 
 func set_oponente(alvo: Node2D):
 	oponente = alvo
@@ -219,7 +219,7 @@ func levar_dano(quantidade: int, e_forte: bool, knockback_oponente: float, direc
 		velocity.x = knockback_oponente * direcao_knockback
 		velocity.y = KNOCKBACK_FORTE_Y
 		await animation_player.animation_finished
-		await piscar_no_animacao(sprite)
+		await piscar_no_animacao(animation_player)
 		animation_player.play("levantar")
 	else:
 		animation_player.play("receber_dano")
@@ -295,7 +295,7 @@ func resetar_estado():
 	emit_signal("vida_mudou", vida_atual, vida_max)
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	
-	sprite.play("entrada")
+	animation_player.play("entrada")
 
 func piscar_no_animacao(no) -> Signal:
 	var tween = create_tween()

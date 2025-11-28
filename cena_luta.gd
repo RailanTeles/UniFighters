@@ -177,12 +177,8 @@ func _checar_fim_da_partida():
 	if vitorias_p1 == 2:
 		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
 		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
-		p1.animation_player.stop() 
-		p2.animation_player.stop() 
-		p1.sprite.play("vitoria")
-		p2.sprite.play("derrota")
-		print(p1.sprite.animation)
-		print(p2.sprite.animation)
+		p1.animation_player.play("vitoria")
+		p2.animation_player.play("derrota")
 		_travar_personagens(true)
 		vitoria_banner_p1.visible = true
 		vitoria_banner_p1.z_index = 100
@@ -194,10 +190,8 @@ func _checar_fim_da_partida():
 	elif vitorias_p2 == 2:
 		p1.global_position = p1_start_position.global_position + Vector2(20, 0)
 		p2.global_position = p2_start_position.global_position - Vector2(20, 0)
-		p1.animation_player.stop() 
-		p2.animation_player.stop() 
-		p2.sprite.play("vitoria")
-		p1.sprite.play("derrota")
+		p2.animation_player.play("vitoria")
+		p1.animation_player.play("derrota")
 		_travar_personagens(true)
 		vitoria_banner_p2.visible = true
 		vitoria_banner_p2.z_index = 100
