@@ -1334,19 +1334,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.2, 0.3, 0.5, 0.6, 0.8, 0.89),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [20, 55.5, -18.0, 100.0, 100.0, false, 1.0],
-"method": &"_ativar_hitbox"
-}, {
-"args": [],
-"method": &"_desativar_hitbox"
-}, {
 "args": [30, 55.5, -18.0, 100.0, 100.0, false, 1.0],
 "method": &"_ativar_hitbox"
 }, {
 "args": [],
 "method": &"_desativar_hitbox"
 }, {
-"args": [50, 55.5, -18.0, 100.0, 100.0, true, 1200.0],
+"args": [50, 55.5, -18.0, 100.0, 100.0, false, 1.0],
+"method": &"_ativar_hitbox"
+}, {
+"args": [],
+"method": &"_desativar_hitbox"
+}, {
+"args": [70, 55.5, -18.0, 100.0, 100.0, true, 1200.0],
 "method": &"_ativar_hitbox"
 }, {
 "args": [],
