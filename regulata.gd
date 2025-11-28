@@ -130,6 +130,10 @@ func _process(delta):
 	var segurando_aura = Input.is_action_pressed(input_farmar)
 	var input_defesa = "p" + str(player_id) + "_defesa"
 	var apertou_defesa = Input.is_action_just_pressed(input_defesa)
+	var input_especial1 = "p" + str(player_id) + "_especial1"
+	var apertou_especial1 = Input.is_action_just_pressed(input_especial1)
+	var input_especial2 = "p" + str(player_id) + "_especial2"
+	var apertou_especial2 = Input.is_action_just_pressed(input_especial2)
 	
 	if apertou_defesa:
 		if tentar_defender():
@@ -152,6 +156,14 @@ func _process(delta):
 	else:
 		tempo_carregando = 0.0
 		esta_carregando_aura = false
+	
+	# Lógicas dos especiais
+	if apertou_especial1:
+		if especial_1():
+			pode_agir = false
+			print("Animou")
+			animation_player.play("especial_1")
+			return
 	
 	# Lógica de Ataque e Combo
 	if apertou_soco or apertou_socoForte:
@@ -253,10 +265,20 @@ func ganhar_aura(quantidade):
 func _on_timer_combo_timeout() -> void:
 	contador_combo = 0
 
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	if anim_name == "defesa" or anim_name == "especial_1":
+		sprite.offset = Vector2(120 * direcao_olhando, 0)
+		await animation_player.animation_finished
+		sprite.offset = Vector2(0, 0)
+
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if esta_morto: return
 	
-	if anim_name == "derrubado":
+	var anims_que_nao_liberam = [
+		"derrubado",
+	]
+	
+	if anim_name in anims_que_nao_liberam:
 		return
 	pode_agir = true
 	
@@ -271,12 +293,6 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 	var ataques_reset = ["golpe_fraco3", "golpe_fraco_ar", "golpe_fraco_agachado"]
 	if anim_name in ataques_reset:
 		contador_combo = 0
-
-func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	if anim_name == "defesa":
-		sprite.offset = Vector2(120 * direcao_olhando, 0)
-		await animation_player.animation_finished
-		sprite.offset = Vector2(0, 0)
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.get_owner() == self: return 
@@ -330,5 +346,19 @@ func tentar_defender():
 	if barra_aura <= 0:
 		return false
 	barra_aura -= 1
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
+	return true
+
+func especial_1():
+	if barra_aura < 2:
+		return false
+	barra_aura -= 2
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
+	return true
+
+func especial_2():
+	if barra_aura < 4:
+		return false
+	barra_aura -= 4
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	return true
