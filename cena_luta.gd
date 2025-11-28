@@ -55,8 +55,10 @@ var p2: CharacterBody2D
 var mapa: Node
 
 var jamylle_textura = preload("res://assets/personagens/regulata/icones/RegulataIconeGrande.png")
+var cabomante_textura = preload("res://assets/personagens/cabomante/icone/CabomanteIconeGrande.png")
 var icone_personagens = {
-	"res://regulata.tscn" : jamylle_textura
+	"res://regulata.tscn" : jamylle_textura,
+	"res://cabomante.tscn" : cabomante_textura
 }
 
 func _ready():
@@ -66,6 +68,9 @@ func _ready():
 	mapa = load(DadosdaPartida.caminho_mapa).instantiate()
 	mapa.z_index = -10
 	add_child(mapa)
+	
+	if DadosdaPartida.caminho_personagem_p2 == "res://cabomante.tscn":
+		p2_start_position.global_position -= Vector2(120, 0)
 
 	# Instanciar jogadores
 	p1 = load(DadosdaPartida.caminho_personagem_p1).instantiate()
@@ -214,10 +219,16 @@ func _resetar_round():
 	p1.global_position = p1_start_position.global_position
 	p2.global_position = p2_start_position.global_position
 	
-	p1.sprite.flip_h = false
-	p1.direcao_olhando = 1
-	p2.sprite.flip_h = true
-	p2.direcao_olhando = -1
+	if DadosdaPartida.caminho_personagem_p1 != "res://cabomante.tscn":
+		p1.sprite.flip_h = false
+		p1.direcao_olhando = 1
+		
+	if DadosdaPartida.caminho_personagem_p2 != "res://cabomante.tscn":
+		p2.sprite.flip_h = true
+		p2.direcao_olhando = -1
+	else:
+		p2.sprite.flip_h = false
+		p2.direcao_olhando = -1
 	
 	p1.velocity = Vector2.ZERO
 	p2.velocity = Vector2.ZERO

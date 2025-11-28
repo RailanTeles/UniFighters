@@ -125,7 +125,7 @@ func _process(delta):
 		if p1_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
 		else:
-			if p1_foco_atual == char_4:
+			if p1_foco_atual == char_4 or p1_foco_atual == char_3:
 				erro_som.play();
 			else:
 				p1_personagem_selecionado = dados_caracteristicas[p1_foco_atual]
@@ -154,7 +154,7 @@ func _process(delta):
 		if p2_foco_atual == comecar_button:
 			_on_comecar_button_pressed()
 		else:
-			if p2_foco_atual == char_4:
+			if p2_foco_atual == char_4 or p2_foco_atual == char_3:
 				erro_som.play();
 			else:
 				p2_personagem_selecionado = dados_caracteristicas[p2_foco_atual]

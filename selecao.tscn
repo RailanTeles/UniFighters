@@ -12,9 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://dk5pp1j014ttx" path="res://assets/musics/alerta.mp3" id="8_qtpp8"]
 [ext_resource type="Texture2D" uid="uid://blnqangnnf6id" path="res://assets/personagens/cabomante/icone/CabomanteIcone.png" id="9_n4pp6"]
 [ext_resource type="AudioStream" uid="uid://butsawnp0nia1" path="res://assets/musics/botaoConfirmar.mp3" id="9_qbpjo"]
-[ext_resource type="Texture2D" uid="uid://csf4u77chists" path="res://assets/personagens/imperatech/icone/ImperatechIcone.png" id="10_lnbtv"]
 [ext_resource type="Texture2D" uid="uid://b72q4f87m0gt2" path="res://assets/selecaoPersonagem/iconeP2.png" id="12_ggar8"]
 [ext_resource type="Texture2D" uid="uid://dkvjd62f5jnxq" path="res://assets/selecaoPersonagem/iconeP1.png" id="13_501mu"]
+[ext_resource type="Texture2D" uid="uid://hsvnpj3wych6" path="res://assets/personagens/imperatech/icone/ImperatechIconeTrancado.png" id="13_ggar8"]
 [ext_resource type="Texture2D" uid="uid://bnje0mhng61cx" path="res://assets/personagens/archiveGG/ArchiveGGIconeTrancado.png" id="14_n4pp6"]
 [ext_resource type="AudioStream" uid="uid://b8gql7bvdp1hv" path="res://assets/selecaoPersonagem/musicasSelecao/REGULATA.mp3" id="17_ggar8"]
 [ext_resource type="AudioStream" uid="uid://yjhg4kynyjmc" path="res://assets/selecaoPersonagem/musicasSelecao/CABOMANTE.mp3" id="18_501mu"]
@@ -211,7 +211,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Char1")
 focus_neighbor_right = NodePath("../Char4")
 focus_neighbor_bottom = NodePath("../../../botoes/comecarButton")
-texture_normal = ExtResource("10_lnbtv")
+texture_normal = ExtResource("13_ggar8")
 
 [node name="Char4" type="TextureButton" parent="selecao/GridContainer"]
 layout_mode = 2
