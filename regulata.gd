@@ -126,6 +126,8 @@ func _process(delta):
 	var is_crouching = Input.is_action_pressed(input_agachar)
 	var input_socar = "p" + str(player_id) + "_socoFraco"
 	var apertou_soco = Input.is_action_just_pressed(input_socar)
+	var input_socarForte = "p" + str(player_id) + "_socoForte"
+	var apertou_socoForte = Input.is_action_just_pressed(input_socarForte)
 	var input_farmar = "p" + str(player_id) + "_aura"
 	var segurando_aura = Input.is_action_pressed(input_farmar)
 	
@@ -144,28 +146,30 @@ func _process(delta):
 		esta_carregando_aura = false
 	
 	# Lógica de Ataque e Combo
-	if apertou_soco:
+	if apertou_soco or apertou_socoForte:
 		pode_agir = false
-		
-		if contador_combo > 0 and timer_combo.time_left > 0:
-			if contador_combo == 1:
-				animation_player.play("golpe_fraco2")
-				contador_combo = 2
-			elif contador_combo == 2:
-				animation_player.play("golpe_fraco3")
-				contador_combo = 0 
+		if apertou_socoForte:
+			animation_player.play("golpe_forte")
 		else:
-			if not is_on_floor():
-				animation_player.play("golpe_fraco_ar")
-				contador_combo = 0 
-			elif is_crouching:
-				animation_player.play("golpe_fraco_agachado")
-				contador_combo = 0 
+			if contador_combo > 0 and timer_combo.time_left > 0:
+				if contador_combo == 1:
+					animation_player.play("golpe_fraco2")
+					contador_combo = 2
+				elif contador_combo == 2:
+					animation_player.play("golpe_fraco3")
+					contador_combo = 0 
 			else:
-				animation_player.play("golpe_fraco1")
-				contador_combo = 1
-		
-		timer_combo.stop()
+				if not is_on_floor():
+					animation_player.play("golpe_fraco_ar")
+					contador_combo = 0 
+				elif is_crouching:
+					animation_player.play("golpe_fraco_agachado")
+					contador_combo = 0 
+				else:
+					animation_player.play("golpe_fraco1")
+					contador_combo = 1
+			
+			timer_combo.stop()
 
 	# Animações de Movimento
 	elif is_on_floor():
@@ -219,8 +223,9 @@ func levar_dano(quantidade: int, e_forte: bool, knockback_oponente: float, direc
 		velocity.x = knockback_oponente * direcao_knockback
 		velocity.y = KNOCKBACK_FORTE_Y
 		await animation_player.animation_finished
-		await piscar_no_animacao(animation_player)
 		animation_player.play("levantar")
+		await animation_player.animation_finished
+		await piscar_no_animacao(sprite)
 	else:
 		animation_player.play("receber_dano")
 		velocity.x = knockback_oponente * direcao_knockback
@@ -247,7 +252,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 		return
 	pode_agir = true
 	
-	var desativa_hitstun = ["receber_dano", "levantar"]
+	var desativa_hitstun = ["receber_dano"]
 	if anim_name in desativa_hitstun:
 		esta_em_hitstun = false
 	
@@ -297,10 +302,12 @@ func resetar_estado():
 	
 	animation_player.play("entrada")
 
-func piscar_no_animacao(no) -> Signal:
+func piscar_no_animacao(no):
 	var tween = create_tween()
 	tween.set_loops(6)
 	tween.tween_property(no, "modulate:a", 0.0, 0.1)
 	tween.tween_property(no, "modulate:a", 1.0, 0.1)
+	await tween.finished
+	esta_em_hitstun = false
 	
-	return tween.finished
+	return

@@ -426,10 +426,10 @@ size_flags_vertical = 0
 flip_h = true
 
 [node name="P1_StartPoint" type="Marker2D" parent="."]
-position = Vector2(75, 480)
+position = Vector2(100, 480)
 
 [node name="P2_StartPoint" type="Marker2D" parent="."]
-position = Vector2(1060, 480)
+position = Vector2(1052, 480)
 
 [node name="TimerRound" type="Timer" parent="."]
 
