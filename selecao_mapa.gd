@@ -34,7 +34,7 @@ func _ready():
 	randomize()
 	CAMINHOS_MAPAS = {
 		mapa_1: "res://cenario_frente.tscn",
-		mapa_2: "res://mapa_quadra.tscn",
+		mapa_2: "res://cenario_quadra.tscn",
 		mapa_3: "res://cenario_patio.tscn"
 	}
 	cursor_aleatorio.visible = false

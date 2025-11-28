@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfu8v556iorxy"]
+
+[ext_resource type="Texture2D" uid="uid://2l43edq0yfwf" path="res://assets/mapas/cenario_quadra.png" id="1_axynb"]
+[ext_resource type="Script" uid="uid://djm5vybckc68o" path="res://cenario_frente.gd" id="2_fmtwk"]
+[ext_resource type="AudioStream" uid="uid://cqjgcpmib62rg" path="res://assets/musics/musica-frente.mp3" id="3_pusuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4d68"]
+atlas = ExtResource("1_axynb")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn8h6"]
+atlas = ExtResource("1_axynb")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1bvh"]
+atlas = ExtResource("1_axynb")
+region = Rect2(2304, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4oj"]
+atlas = ExtResource("1_axynb")
+region = Rect2(3456, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3cir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4d68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn8h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1bvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4oj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cenario_quadra" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_p3cir")
+autoplay = "default"
+frame_progress = 0.599545
+centered = false
+script = ExtResource("2_fmtwk")
+
+[node name="cenario_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pusuh")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
