@@ -119,8 +119,6 @@ func _process(delta):
 	if esta_morto:
 		animation_player.play("receber_dano")
 
-	if not pode_agir: return
-
 	# Inputs
 	var input_agachar = "p" + str(player_id) + "_baixo"
 	var is_crouching = Input.is_action_pressed(input_agachar)
@@ -130,6 +128,16 @@ func _process(delta):
 	var apertou_socoForte = Input.is_action_just_pressed(input_socarForte)
 	var input_farmar = "p" + str(player_id) + "_aura"
 	var segurando_aura = Input.is_action_pressed(input_farmar)
+	var input_defesa = "p" + str(player_id) + "_defesa"
+	var apertou_defesa = Input.is_action_just_pressed(input_defesa)
+	
+	if apertou_defesa:
+		if tentar_defender():
+			esta_em_hitstun = true
+			pode_agir = false
+			animation_player.play("defesa")
+	
+	if not pode_agir: return
 	
 	if segurando_aura and is_on_floor() and barra_aura < 5:
 		esta_carregando_aura = true
@@ -252,7 +260,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 		return
 	pode_agir = true
 	
-	var desativa_hitstun = ["receber_dano"]
+	var desativa_hitstun = ["receber_dano", "defesa"]
 	if anim_name in desativa_hitstun:
 		esta_em_hitstun = false
 	
@@ -263,6 +271,12 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 	var ataques_reset = ["golpe_fraco3", "golpe_fraco_ar", "golpe_fraco_agachado"]
 	if anim_name in ataques_reset:
 		contador_combo = 0
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	if anim_name == "defesa":
+		sprite.offset = Vector2(120 * direcao_olhando, 0)
+		await animation_player.animation_finished
+		sprite.offset = Vector2(0, 0)
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.get_owner() == self: return 
@@ -311,3 +325,10 @@ func piscar_no_animacao(no):
 	esta_em_hitstun = false
 	
 	return
+
+func tentar_defender():
+	if barra_aura <= 0:
+		return false
+	barra_aura -= 1
+	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
+	return true

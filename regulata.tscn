@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://dt3pv0bfcm6cx"]
+[gd_scene load_steps=124 format=3 uid="uid://dt3pv0bfcm6cx"]
 
 [ext_resource type="Script" uid="uid://coj0s3lgfa5hr" path="res://regulata.gd" id="1_defoa"]
 [ext_resource type="Texture2D" uid="uid://buhg3q84c67ry" path="res://assets/personagens/regulata/sprites/jamylle_idle.png" id="1_e8wdl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dgtl364l5q0oq" path="res://assets/personagens/regulata/sprites/jamylle_pular.png" id="5_3s1g2"]
 [ext_resource type="Texture2D" uid="uid://bb8m8hdppk4gs" path="res://assets/personagens/regulata/sprites/derrubada.png" id="5_43llg"]
 [ext_resource type="Texture2D" uid="uid://ch56bl1j6rml7" path="res://assets/personagens/regulata/sprites/derrota.png" id="5_kboh1"]
+[ext_resource type="Texture2D" uid="uid://ba6hmc70x2uqi" path="res://assets/personagens/regulata/sprites/defesa.png" id="5_orce6"]
 [ext_resource type="Texture2D" uid="uid://b841l3000ce2u" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra1.png" id="5_sf52j"]
 [ext_resource type="Texture2D" uid="uid://baunc2t1ws2fd" path="res://assets/personagens/regulata/sprites/entrada.png" id="6_0y8oa"]
 [ext_resource type="Texture2D" uid="uid://cv5wcqnw5csxj" path="res://assets/personagens/regulata/sprites/jamylle_golpeFra2.png" id="6_kkpxh"]
@@ -53,6 +54,22 @@ region = Rect2(192, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl61j"]
 atlas = ExtResource("3_1qjka")
 region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3r3k"]
+atlas = ExtResource("5_orce6")
+region = Rect2(0, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v5yb"]
+atlas = ExtResource("5_orce6")
+region = Rect2(384, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afyev"]
+atlas = ExtResource("5_orce6")
+region = Rect2(768, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfqoh"]
+atlas = ExtResource("1_e8wdl")
+region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxiey"]
 atlas = ExtResource("5_kboh1")
@@ -222,10 +239,6 @@ region = Rect2(192, 0, 192, 192)
 atlas = ExtResource("9_43llg")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfqoh"]
-atlas = ExtResource("1_e8wdl")
-region = Rect2(0, 0, 192, 192)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_defoa"]
 atlas = ExtResource("1_e8wdl")
 region = Rect2(192, 0, 192, 192)
@@ -347,6 +360,23 @@ animations = [{
 "loop": false,
 "name": &"andar_tras",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3r3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v5yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afyev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfqoh")
+}],
+"loop": false,
+"name": &"defesa",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1354,12 +1384,62 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ryeag"]
+resource_name = "defesa"
+length = 0.5
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAnimado:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"defesa"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimado:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.33, 0.49),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0, 104.0, -30.0, 148.0, 110.0, false, 1000.0],
+"method": &"_ativar_hitbox"
+}, {
+"args": [0, 152.0, -15.0, 244.0, 150.0, false, 1500.0],
+"method": &"_ativar_hitbox"
+}, {
+"args": [],
+"method": &"_desativar_hitbox"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ep2x"]
 _data = {
 &"RESET": SubResource("Animation_kkpxh"),
 &"agachar": SubResource("Animation_orce6"),
 &"andar_frente": SubResource("Animation_81d6k"),
 &"andar_tras": SubResource("Animation_y66fp"),
+&"defesa": SubResource("Animation_ryeag"),
 &"derrota": SubResource("Animation_clomf"),
 &"derrubado": SubResource("Animation_kboh1"),
 &"entrada": SubResource("Animation_qb7cq"),
@@ -1418,7 +1498,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_2ep2x")
 }
 
-[connection signal="animation_finished" from="SpriteAnimado" to="." method="_on_sprite_animado_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="TimerCombo" to="." method="_on_timer_combo_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
