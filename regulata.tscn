@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://dt3pv0bfcm6cx"]
+[gd_scene load_steps=136 format=3 uid="uid://dt3pv0bfcm6cx"]
 
 [ext_resource type="Script" uid="uid://coj0s3lgfa5hr" path="res://regulata.gd" id="1_defoa"]
 [ext_resource type="Texture2D" uid="uid://buhg3q84c67ry" path="res://assets/personagens/regulata/sprites/jamylle_idle.png" id="1_e8wdl"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cn3ab3o1k8wv1" path="res://assets/personagens/regulata/sprites/jamylle_golpeFraAr.png" id="9_43llg"]
 [ext_resource type="Texture2D" uid="uid://ye5b1eisr3n3" path="res://assets/personagens/regulata/sprites/golpe_forte.png" id="9_vma20"]
 [ext_resource type="Texture2D" uid="uid://dnvc6ime73h5h" path="res://assets/personagens/regulata/sprites/especial_1.png" id="10_81d6k"]
+[ext_resource type="Texture2D" uid="uid://cliom18wu5tml" path="res://assets/personagens/regulata/sprites/especial_2.png" id="11_y66fp"]
 [ext_resource type="Texture2D" uid="uid://b28oa4g7pb3j7" path="res://assets/personagens/regulata/sprites/iniciando_aura_jamylle.png" id="12_c7xcj"]
 [ext_resource type="Texture2D" uid="uid://wru5cg6pelee" path="res://assets/personagens/regulata/sprites/levantar.png" id="14_0y8oa"]
 [ext_resource type="Texture2D" uid="uid://duvipyfxt55w6" path="res://assets/personagens/regulata/sprites/vitoria.png" id="16_prbsw"]
@@ -147,6 +148,14 @@ region = Rect2(1536, 0, 384, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_72suw"]
 atlas = ExtResource("10_81d6k")
 region = Rect2(1920, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3wc7"]
+atlas = ExtResource("11_y66fp")
+region = Rect2(0, 0, 335, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm8jr"]
+atlas = ExtResource("11_y66fp")
+region = Rect2(335, 0, 335, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryhtx"]
 atlas = ExtResource("5_2ep2x")
@@ -485,6 +494,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k3wc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm8jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfqoh")
+}],
+"loop": false,
+"name": &"especial_2",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ryhtx")
 }, {
 "duration": 1.0,
@@ -711,7 +734,7 @@ animations = [{
 size = Vector2(65, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4cif"]
-size = Vector2(200, 100)
+size = Vector2(162, 195)
 
 [sub_resource type="Animation" id="Animation_kkpxh"]
 length = 0.4
@@ -1458,7 +1481,7 @@ tracks/1/path = NodePath("SpriteAnimado:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.33, 0.49),
+"times": PackedFloat32Array(0, 0.16, 0.33, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -1524,10 +1547,56 @@ tracks/2/path = NodePath("SpriteAnimado:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.69),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_6kmp3"]
+resource_name = "especial_2"
+length = 0.6
+step = 0.35
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.59),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [400, 110.0, 0.0, 162.0, 195.0, true, 2000.0],
+"method": &"_ativar_hitbox"
+}, {
+"args": [],
+"method": &"_desativar_hitbox"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteAnimado:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"especial_2", &"especial_2"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteAnimado:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ep2x"]
@@ -1541,6 +1610,7 @@ _data = {
 &"derrubado": SubResource("Animation_kboh1"),
 &"entrada": SubResource("Animation_qb7cq"),
 &"especial_1": SubResource("Animation_k3wc7"),
+&"especial_2": SubResource("Animation_6kmp3"),
 &"farmando_aura": SubResource("Animation_p4pqu"),
 &"golpe_forte": SubResource("Animation_i3r3k"),
 &"golpe_fraco1": SubResource("Animation_sf52j"),
@@ -1583,7 +1653,7 @@ monitoring = false
 monitorable = false
 
 [node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(90, -18)
+position = Vector2(110, 0)
 scale = Vector2(1.01217, 1)
 shape = SubResource("RectangleShape2D_t4cif")
 disabled = true

@@ -164,6 +164,12 @@ func _process(delta):
 			print("Animou")
 			animation_player.play("especial_1")
 			return
+			
+	if apertou_especial2:
+		if especial_2():
+			pode_agir = false
+			animation_player.play("especial_2")
+			return
 	
 	# Lógica de Ataque e Combo
 	if apertou_soco or apertou_socoForte:
@@ -266,7 +272,7 @@ func _on_timer_combo_timeout() -> void:
 	contador_combo = 0
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	if anim_name == "defesa" or anim_name == "especial_1":
+	if anim_name == "defesa" or anim_name == "especial_1" or anim_name == "especial_2":
 		sprite.offset = Vector2(120 * direcao_olhando, 0)
 		await animation_player.animation_finished
 		sprite.offset = Vector2(0, 0)
@@ -345,6 +351,8 @@ func piscar_no_animacao(no):
 func tentar_defender():
 	if barra_aura <= 0:
 		return false
+	if aura_atual >= 100:
+		aura_atual = 0
 	barra_aura -= 1
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	return true
@@ -352,6 +360,8 @@ func tentar_defender():
 func especial_1():
 	if barra_aura < 2:
 		return false
+	if aura_atual >= 100:
+		aura_atual = 0
 	barra_aura -= 2
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	return true
@@ -359,6 +369,8 @@ func especial_1():
 func especial_2():
 	if barra_aura < 4:
 		return false
+	if aura_atual >= 100:
+		aura_atual = 0
 	barra_aura -= 4
 	emit_signal("aura_mudou", aura_atual, aura_max, barra_aura)
 	return true
